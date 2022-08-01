@@ -1,18 +1,22 @@
 import React from 'react';
-import {Routes, Route } from 'react-router-dom';
-import Login from "./Login"
+import { Routes, Route } from 'react-router-dom';
+import Login from './Login';
+import Register from './Register';
+import Routines from './Routines';
+import ViewRoutines from './ViewRoutines';
+import Activities from './Activities';
+
+//https://guarded-stream-12358.herokuapp.com/
 
 function App() {
   return (
-    <div>
-      <Routes>
-        <Route exact path ='login'
-        element = {<Login/>}
-        />
-      </Routes>
-      
-      <h1>Hello World</h1>
-    </div>
+    <Routes>
+      <Route path="/" element={<Login />} />
+      <Route path="/register" element={<Register />} />
+      <Route path="/routines" element={<Routines />} />
+      <Route path="/routines/:id" element={<ViewRoutines />} />
+      <Route path="/activities" element={<Activities />} />
+    </Routes>
   );
 }
 
