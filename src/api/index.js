@@ -126,3 +126,146 @@ export async function showPublicRoutines() {
         throw error
     }
   }
+
+  export async function editActivity(name, description, token, activityId){
+    try {
+        const response = await fetch (`${BASE}api/activities/:${activityId}`,{
+            method: "PATCH",
+            headers: {
+                'Content-Type': 'application/json',
+                Authorization: `Bearer ${token}`,
+            },
+            body: JSON.stringify({
+                name: name,
+                description: description,
+            })
+        })
+        const data = await response.json();
+        return data;
+    } catch (error){
+        throw error
+    }
+  }
+
+  export async function getAllPublicRoutinesbyActivityId(activityId){
+    try {
+        const response = await fetch (`${BASE}api/activities/:${activityId}/routines`)
+    const data = await response.json()
+    return data
+    } catch (error){
+        throw error
+    }
+  }
+
+  export async function createRoutine(name, goal, isPublic, token){
+    try{
+        const response = await fetch (`${BASE}api/routines`,{
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                Authorization: `Bearer ${token}`,
+            },
+            body: JSON.stringify({
+                name: name,
+                goal: goal,
+                isPublic: isPublic
+            })
+            
+        }) 
+        const data = await response.json()
+        return data
+    } catch (error){
+        throw error
+    }
+  }
+
+  export async function editRoutine(name, goal, isPublic, routineId, token){
+    try {
+        const response = await fetch (`${BASE}api/routines/:${routineId}`,{
+            method: "PATCH",
+            headers: {
+                'Content-Type': 'application/json',
+                Authorization: `Bearer ${token}`,
+            },
+            body: JSON.stringify({
+                name: name,
+                goal: goal,
+                isPublic: isPublic
+            })
+        })
+        const data = await response.json();
+        return data;
+    } catch (error){
+        throw error
+    }
+  }
+
+  export async function deleteRoutine(token, routineId) {
+    try {
+      const response = await fetch(`${BASE}api/routines/:${routineId}`, {
+        method: "DELETE",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+      });
+    } catch (error) {
+      console.error(error);
+    }
+  }
+
+  export async function attachActivityToRoutine(token, activityId, count, duration, routineId){
+    try{
+        const response = await fetch (`${BASE}api/routines/:${routineId}/activities`,{
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+                Authorization: `Bearer ${token}`,
+            },
+            body: JSON.stringify({
+                activityId: activityId,
+                count: count,
+                duration: duration,
+            })
+        })
+        const data = await response.json();
+        return data
+    } catch (error){
+        throw error
+    }
+  }
+
+  export async function updateRoutineActivity(count, duration, token){
+    try{
+        const response = await fetch(`${BASE}api/routine_activities/:routineActivityId`,{
+            method: "PATCH",
+            headers: {
+                'Content-Type': 'application/json',
+                Authorization: `Bearer ${token}`,
+            },
+            body: JSON.stringify({
+                count: count,
+                duration: duration,
+            })
+        })
+        const data = await response.json();
+        return data
+
+    } catch (error){
+        throw error
+    }
+  }
+
+  export async function deleteRoutineActivity(token){
+    try {
+        const response = await fetch(`${BASE}api/routine_activities/:routineActivityId`, {
+            method: "DELETE",
+            headers: {
+              "Content-Type": "application/json",
+              Authorization: `Bearer ${token}`,
+            },
+    });  
+  }catch(error){
+    throw error
+    }
+}
