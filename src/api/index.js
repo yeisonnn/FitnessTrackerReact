@@ -40,15 +40,27 @@ export async function loginUser(username, password) {
 
 export async function showMyInfo(token) {
   try {
-    const data = await fetch(`${BASE}api/users/me`, {
+    const response = await fetch(`${BASE}api/users/me`, {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',
         Authorization: `Bearer ${token}`,
       },
     });
+    const data = await response.json();
     return data;
   } catch (error) {
     console.error(error);
   }
 }
+
+export async function showPublicRoutines() {
+    try {
+      const response = await fetch(`${BASE}api/routines`,)
+      const data = await response.json();
+      console.log(data)
+      return data
+    } catch (error) {
+      console.error(error);
+    }
+  }

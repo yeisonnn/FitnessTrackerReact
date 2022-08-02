@@ -10,10 +10,10 @@ const Register = () => {
 
   const registerUserHandler = async () => {
     const registrationInfo = await registerUser(username, password);
-    const token = registrationInfo;
+    const token = registrationInfo.token;
     setTokenUser(token)
     const user = registrationInfo.user.username;
-    storeCurrentUser('token', tokenUser);
+    storeCurrentUser('token', token);
     storeCurrentUser('username', user);
     //resetting value for inputs
     setUsername('');

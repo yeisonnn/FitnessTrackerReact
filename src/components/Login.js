@@ -15,7 +15,7 @@ const Login = (props) => {
         const token = loginInfo.token;
         setTokenUser(token)
         const user = loginInfo.user.username;
-        storeCurrentUser('token', tokenUser);
+        storeCurrentUser('token', token);
         storeCurrentUser('username', user);
   
         setUsername('');
@@ -51,3 +51,4 @@ const Login = (props) => {
 };
 
 export default Login;
+
