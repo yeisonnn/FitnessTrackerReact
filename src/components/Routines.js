@@ -1,7 +1,35 @@
-import { showPublicRoutines } from "../api";
+import React, { useState, useEffect } from 'react';
+
+import { showPublicRoutines } from '../api';
 
 const Routines = () => {
-  return <h1>This is routines</h1>;
+  const [publicRoutines, setPublicRoutines] = useState([]);
+
+  const getAllPublicRoutines = async () => {
+    const publicRoutines = await showPublicRoutines();
+    const isPublic = await publicRoutines.filter(
+      (ele) => ele.isPublic === true
+    );
+    setPublicRoutines(isPublic);
+    return;
+  };
+
+  useEffect(() => {
+    getAllPublicRoutines();
+  }, []);
+
+  return (
+    <>
+      <h2>this is public routines</h2>
+      <ul>
+        {publicRoutines.map((rtn) => (
+          <li key={rtn.id}>
+            {rtn.name}: {rtn.goal}
+          </li>
+        ))}
+      </ul>
+    </>
+  );
 };
-showPublicRoutines()
+
 export default Routines;
