@@ -5,13 +5,15 @@ import Register from './Register';
 import Routines from './Routines';
 import ViewRoutines from './ViewRoutines';
 import Activities from './Activities';
+import Home from './Home';
 
 //https://guarded-stream-12358.herokuapp.com/
 
 function App() {
   return (
     <Routes>
-      <Route path="/" element={<Login />} />
+      <Route path="/home" element={<Home />} />
+      <Route path="/Login" element={<Login />} />
       <Route path="/register" element={<Register />} />
       <Route path="/routines" element={<Routines />} />
       <Route path="/routines/:id" element={<ViewRoutines />} />

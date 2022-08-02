@@ -1,0 +1,165 @@
+@import url('https://fonts.googleapis.com/css2?family=Metamorphous&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Rajdhani:wght@300;400&display=swap');
+
+.mainHome {
+  width: 100%;
+  height: 100vh;
+  background-image: url('../images/backgroundFitness.jpg');
+  background-position: center;
+  background-size: 100%;
+  font-family: 'Metamorphous', cursive;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  filter: grayscale(33%);
+}
+
+.home-container {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  justify-items: center;
+  /* align-items: center; */
+  width: 95%;
+  height: 100%;
+  color: #fff;
+  position: relative;
+  z-index: 2;
+}
+
+.welcome {
+  display: flex;
+  flex-direction: column;
+  padding: 1rem;
+  justify-content: center;
+  /* align-items: center; */
+  gap: 4rem;
+}
+
+.title {
+  font-size: 4rem;
+  letter-spacing: 2px;
+  width: 80%;
+  line-height: 1.4;
+  text-transform: uppercase;
+}
+
+.title span {
+  background-image: radial-gradient(
+    circle 759px at -6.7% 50%,
+    rgba(80, 131, 73, 1) 0%,
+    rgba(140, 209, 131, 1) 26.2%,
+    rgba(178, 231, 170, 1) 50.6%,
+    rgba(144, 213, 135, 1) 74.1%,
+    rgba(75, 118, 69, 1) 100.3%
+  );
+  color: transparent;
+  -webkit-background-clip: text;
+  font-size: 6.5rem;
+  font-weight: 600;
+}
+
+/* Buttons home page */
+.btn {
+  font-size: 2rem;
+  background-color: transparent;
+  padding: 0.8rem 1.6rem;
+  border-radius: 5px;
+  /* border: 1px solid #2f9e44; */
+  font-family: inherit;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.btn a {
+  display: inline-block;
+  text-decoration: none;
+  color: #fff;
+}
+
+/* button primary */
+.primary {
+  border: 1px solid #2f9e44;
+}
+
+.primary a {
+  color: #2f9e44;
+}
+
+.primary:hover {
+  background-color: #2f9e44;
+}
+
+.primary:hover a {
+  color: #fff;
+}
+
+/* button secondary */
+.secondary {
+  border: 1px solid #e03131;
+}
+
+.secondary a {
+  color: #e03131;
+}
+
+.secondary:hover {
+  background-color: #e03131;
+}
+
+.secondary:hover a {
+  color: #fff;
+}
+
+.welcome h3 {
+  font-family: 'Rajdhani', sans-serif;
+  font-size: 4rem;
+
+  color: #fff;
+  font-weight: 300;
+}
+
+.info {
+  font-size: 3rem;
+  padding: 1rem 4rem;
+  display: grid;
+}
+
+.info-list {
+  list-style: none;
+  cursor: pointer;
+  display: flex;
+  gap: 2rem;
+}
+
+.info-list li a {
+  color: white;
+  font-size: 2.4rem;
+  text-decoration: none;
+  opacity: 0.8;
+  display: inline-block;
+  position: relative;
+  transition: all 0.2s;
+}
+
+.info-list li a:hover {
+  opacity: 1;
+}
+
+.info-list li a::before {
+  content: '';
+  width: 5px;
+  height: 25px;
+  background-color: #fff;
+  display: inline-block;
+  margin-right: 5px;
+  background-color: tomato;
+  opacity: 0;
+}
+
+.info-list li a:hover::before {
+  opacity: 1;
+}
+
+.register-btn {
+  margin-left: auto;
+}
