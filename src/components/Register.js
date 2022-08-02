@@ -1,25 +1,24 @@
-import React, { useState, useEffect } from 'react';
-import { registerUser } from '../api';
+import React, { useState } from 'react';
 import { storeCurrentUser } from '../utils/auth';
+import { registerUser } from '../api';
+
 
 const Register = () => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
+  const [tokenUser, setTokenUser] = useState('')
 
   const registerUserHandler = async () => {
     const registrationInfo = await registerUser(username, password);
-    const { token } = registrationInfo;
-    const newUser = registrationInfo.user.username;
-
-    //Storing new user in local storage
-    storeCurrentUser('token', token);
-    storeCurrentUser('newUser', newUser);
-    storeCurrentUser('password', password);
-
+    const token = registrationInfo;
+    setTokenUser(token)
+    const user = registrationInfo.user.username;
+    storeCurrentUser('token', tokenUser);
+    storeCurrentUser('username', user);
     //resetting value for inputs
     setUsername('');
     setPassword('');
-    console.log(token, newUser, 'registration *********');
+    console.log(token, user, 'registration *********');
   };
 
   return (

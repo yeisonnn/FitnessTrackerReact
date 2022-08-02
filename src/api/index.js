@@ -13,34 +13,30 @@ export async function registerUser(username, password) {
       }),
     });
     const data = await response.json();
-    console.log(data, 'data');
     return data;
   } catch (error) {
     throw error;
   }
 }
 
-export async function loginUser(userName, passWord, setToken) {
-  fetch(`${BASE}api/users/login`, {
+export async function loginUser(username, password) {
+    try {
+         const response = await fetch(`${BASE}api/users/login`,{
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
     },
     body: JSON.stringify({
-      user: {
-        username: userName,
-        password: passWord,
-      },
-    }),
-  })
-    .then((response) => response.json())
-    .then((result) => {
-      const userToken = result.data.token;
-      localStorage.setItem('Token', userToken);
-      setToken(userToken);
-    })
-    .catch(console.error);
-}
+        username,
+        password,
+        }),
+    });
+    const data = await response.json();
+    return data;
+    } catch (error) {
+    throw error;
+    }
+    }
 
 export async function showMyInfo(token) {
   try {
