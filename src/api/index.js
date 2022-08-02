@@ -64,3 +64,65 @@ export async function showPublicRoutines() {
       console.error(error);
     }
   }
+
+  export async function showRoutinesByUser(username, token){
+    try{
+        const response = await fetch(`${BASE}api/:${username}/routines`,{
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json',
+                Authorization: `Bearer ${token}`,
+            }
+        })
+        const data = await response.json();
+        return data
+    } catch (error){
+        throw error
+    }
+  }
+
+  export async function showPublicRoutinesByUser(username){
+    try{
+        const response = await fetch(`${BASE}api/:${username}/routines`,{
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        })
+        const data = await response.json();
+        return data
+    } catch (error){
+        throw error
+    }
+  }
+
+  export async function getActivities (){
+    try {
+        const response = await fetch (`${BASE}api/activities`)
+        const data = response.json()
+        return data
+    } catch (error){
+        throw error
+    }
+  }
+
+  export async function createActivity(name, description, token){
+    try{
+        const response = await fetch (`${BASE}api/activities`,{
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                Authorization: `Bearer ${token}`,
+            },
+            body: JSON.stringify({
+                name: name,
+                description: description,
+            })
+            
+        }) 
+        const data = await response.json()
+        return data
+    } catch (error){
+        throw error
+    }
+  }
