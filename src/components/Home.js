@@ -2,12 +2,14 @@ import { Link } from 'react-router-dom';
 import React, { useState } from 'react';
 import classes from './Home.module.css';
 import Login from './Login';
+import { getCurrentData } from '../utils/auth';
 import { AiOutlinePlus } from 'react-icons/ai';
 import { AiOutlineCopyright } from 'react-icons/ai';
 import logo from '../images/logo.svg';
 
 const Home = () => {
-  const [showLogin, setLogin] = useState(true);
+  const [userLogged, setUserLogged] = useState('');
+
   return (
     <>
       <section className={classes.mainHome}>
@@ -32,12 +34,13 @@ const Home = () => {
             </ul>
           </div>
           <div className={classes.info}>
-            {showLogin ? (
-              <Login />
+            {!userLogged ? (
+              <Login setUserLogged={setUserLogged} />
             ) : (
-              <>
-                <h1>Welcome username</h1>
-              </>
+              <div className={classes['home-user']}>
+                <h3>Welcome</h3>
+                <h2>{userLogged}</h2>
+              </div>
             )}
           </div>
         </div>
