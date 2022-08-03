@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { createRoutine } from '../api';
 import { getCurrentData } from '../utils/auth';
+import classes from './CreateRoutine.module.css';
 
 const CreateRoutine = (props) => {
   const token = getCurrentData('token');
@@ -16,23 +17,22 @@ const CreateRoutine = (props) => {
     console.log(activities, 'This is submitted activities');
   }
   return (
-    <div>
-      <form onSubmit={handleSubmit}>
-        <label>
-          <input
-            type="text"
-            value={name}
-            onChange={(e) => setName(e.target.value)}
-          ></input>
-        </label>
-        <label>
-          <input
-            type="text"
-            value={goal}
-            onChange={(e) => setGoal(e.target.value)}
-          ></input>
-        </label>
-        <button type="submit">Create Routine</button>
+    <div className={classes['login-body']}>
+      <form className={classes.form} onSubmit={handleSubmit}>
+        <input
+          type="text"
+          placeholder="Name Of Routine"
+          value={name}
+          onChange={(e) => setName(e.target.value)}
+        />
+        <input
+          type="text"
+          placeholder="Goal"
+          value={goal}
+          onChange={(e) => setGoal(e.target.value)}
+        />
+
+        <input type="submit" value="create" />
       </form>
     </div>
   );

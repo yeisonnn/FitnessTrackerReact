@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { getActivities } from '../api';
-import CreateActivities from './createActivities';
+import CreateActivities from './CreateActivities';
 import Layout from './Layout';
 
 const Activities = () => {

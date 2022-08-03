@@ -25,6 +25,10 @@ const Navbar = () => {
             <FaUserCheck />
             Login
           </Link>
+          <Link to="/myRoutines">
+            <FaUserCheck />
+            My Routines
+          </Link>
         </li>
       </ul>
     </nav>

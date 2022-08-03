@@ -13,6 +13,9 @@ const Login = (props) => {
   async function handleSubmit(event) {
     event.preventDefault();
     const loginInfo = await loginUser(username, password);
+    if (!loginInfo) {
+      return;
+    }
     const token = loginInfo.token;
     setTokenUser(token);
     const user = loginInfo.user.username;
@@ -21,22 +24,19 @@ const Login = (props) => {
     setUsername('');
     setPassword('');
     setUserLogged(getCurrentData('username'));
-    console.log(loginInfo, 'This is a click');
   }
 
   return (
     <div className={classes['login-body']}>
       <form className={classes.form} onSubmit={handleSubmit}>
         <input
-          name="name"
           type="text"
           placeholder="Name"
           value={username}
           onChange={(e) => setUsername(e.target.value)}
         />
         <input
-          name="email"
-          type="text"
+          type="password"
           placeholder="Password"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
