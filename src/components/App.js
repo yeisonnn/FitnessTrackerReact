@@ -3,6 +3,7 @@ import { Routes, Route } from 'react-router-dom';
 import Login from './Login';
 import Register from './Register';
 import Routines from './Routines';
+import MyRoutines from './MyRoutines';
 import ViewRoutines from './ViewRoutines';
 import Activities from './Activities';
 import Home from './Home';
@@ -16,6 +17,7 @@ function App() {
       <Route path="/Login" element={<Login />} />
       <Route path="/register" element={<Register />} />
       <Route path="/routines" element={<Routines />} />
+      <Route path="/MyRoutines" element={<MyRoutines />} />
       <Route path="/routines/:id" element={<ViewRoutines />} />
       <Route path="/activities" element={<Activities />} />
     </Routes>
