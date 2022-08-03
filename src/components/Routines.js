@@ -31,7 +31,9 @@ const Routines = () => {
           <ul>
             {publicRoutines.map((rtn) => (
               <li key={rtn.id}>
-                {rtn.name}: {rtn.goal}
+                Name:{rtn.name}
+                Goal:{rtn.goal}
+                Activities:{rtn.activities}
               </li>
             ))}
           </ul>
