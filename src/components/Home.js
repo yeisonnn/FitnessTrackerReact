@@ -1,8 +1,9 @@
 import { Link } from 'react-router-dom';
-
+import React, { useState } from 'react';
 import classes from './Home.module.css';
 
 const Home = () => {
+  const [showLogin, setLogin] = useState(true);
   return (
     <section className={classes.mainHome}>
       <div className={classes['home-container']}>
@@ -11,8 +12,8 @@ const Home = () => {
             Welcome to <span>fitness </span>tracker
           </h1>
           <div>
-            <button className={`${classes.btn} ${classes.primary}`}>
-              <Link to="/login">Login</Link>
+            <button className={`${classes.btn} ${classes.secondary}`}>
+              <Link to="/login">Sign Up Now!</Link>
             </button>
           </div>
           <h3>Stay healthy - Get fit</h3>

@@ -1,0 +1,34 @@
+@import url('https://fonts.googleapis.com/css2?family=Shadows+Into+Light&display=swap');
+
+.routines-main {
+  padding: 2rem;
+}
+
+.routines-header {
+  box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+
+  margin-bottom: 2rem;
+}
+
+.routines-header h2 {
+  font-size: 4rem;
+  color: #666;
+  background-color: hsl(210, 16%, 96%);
+
+  /* clip-path: polygon(5% 0%, 100% 0%, 95% 100%, 0% 100%); */
+  text-align: center;
+  text-shadow: 1px 1px 1px #999;
+}
+
+.routines-header span {
+  color: #e67700;
+  text-shadow: 2px 2px 1px rgba(0, 0, 0, 0.4);
+  font-size: 7rem;
+  font-family: 'Shadows Into Light', cursive;
+  letter-spacing: 2px;
+}
+.routines-body {
+  display: grid;
+  grid-template-rows: repeat(2, minmax(250px, min-content));
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+}
