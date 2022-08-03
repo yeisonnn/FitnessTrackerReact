@@ -2,17 +2,18 @@ import React, { useState } from "react";
 import { createActivity } from "../api";
 import { getCurrentData } from '../utils/auth'
 
-const createAnActivity = (props) => {
-    const token = getCurrentData("token")
-    const [name, setName] = useState("");
+const CreateActivities = (props) => {
+    const token = getCurrentData("token");
+    const [name, setName] = useState("")
     const [description, setDescription] = useState("");
 
 
     async function handleSubmit(event){
         event.preventDefault();
-        await createActivity (name, description, token)
+        const activities = await createActivity (name, description, token)
         setName('')
         setDescription('')
+        console.log(activities, "This is submitted activities")
         
     }
     return (
@@ -34,4 +35,4 @@ const createAnActivity = (props) => {
     )
 }
 
-export default createAnActivity
+export default CreateActivities

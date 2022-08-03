@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { getActivities } from '../api';
-import createAnActivity from './createActivity'
+import CreateActivities from './createActivities'
 
 const Activities = () => {
   const [allActivities, setAllActivities] = useState([]);
@@ -23,7 +23,7 @@ const Activities = () => {
       )}
     </ul>
     <div>
-      <createAnActivity/>
+      <CreateActivities/>
     </div>
   </>
   )
