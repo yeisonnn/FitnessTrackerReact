@@ -17,10 +17,8 @@ const Login = (props) => {
         const user = loginInfo.user.username;
         storeCurrentUser('token', token);
         storeCurrentUser('username', user);
-  
         setUsername('');
         setPassword('');
-        console.log(loginInfo, "This is a click")
     }
         
       
