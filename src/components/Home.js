@@ -2,13 +2,19 @@ import { Link } from 'react-router-dom';
 import React, { useState } from 'react';
 import classes from './Home.module.css';
 import Login from './Login';
-import { getCurrentData } from '../utils/auth';
+import { getCurrentData, clearCurrentData } from '../utils/auth';
 import { AiOutlinePlus } from 'react-icons/ai';
 import { AiOutlineCopyright } from 'react-icons/ai';
 import logo from '../images/logo.svg';
 
 const Home = () => {
   const [userLogged, setUserLogged] = useState('');
+  const currentUser = getCurrentData('username');
+
+  const signOutHandler = () => {
+    clearCurrentData();
+    setUserLogged('');
+  };
 
   return (
     <>
@@ -34,13 +40,14 @@ const Home = () => {
             </ul>
           </div>
           <div className={classes.info}>
-            {!userLogged ? (
-              <Login setUserLogged={setUserLogged} />
-            ) : (
+            {currentUser || userLogged ? (
               <div className={classes['home-user']}>
                 <h3>Welcome</h3>
-                <h2>{userLogged}</h2>
+                <h2>{currentUser}</h2>
+                <button onClick={signOutHandler}>Sign out</button>
               </div>
+            ) : (
+              <Login setUserLogged={setUserLogged} />
             )}
           </div>
         </div>

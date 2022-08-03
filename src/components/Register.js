@@ -3,23 +3,22 @@ import { storeCurrentUser } from '../utils/auth';
 import { registerUser } from '../api';
 import Layout from './Layout';
 import classes from './Register.module.css';
+import { useNavigate } from 'react-router-dom';
 
 const Register = () => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [tokenUser, setTokenUser] = useState('');
+  const navigate = useNavigate();
 
   const registerUserHandler = async (event) => {
     event.preventDefault();
     const registrationInfo = await registerUser(username, password);
-    const token = registrationInfo.token;
-    // setTokenUser(token);
-    // const user = registrationInfo.user.username;
-    // storeCurrentUser('token', token);
-    // storeCurrentUser('username', user);
+
     //resetting value for inputs
     setUsername('');
     setPassword('');
+    navigate('/');
   };
 
   return (

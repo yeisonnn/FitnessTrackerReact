@@ -322,3 +322,18 @@
   color: transparent;
   -webkit-background-clip: text;
 }
+
+.home-user button {
+  font-family: 'Metamorphous', cursive;
+  padding: 0.7rem 1rem;
+  border: 1px solid #fff;
+  cursor: pointer;
+  background-color: transparent;
+  color: #fff;
+  transition: all 0.3s;
+}
+
+.home-user button:hover {
+  background-color: #f8f9fa;
+  color: #333;
+}

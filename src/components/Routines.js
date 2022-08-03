@@ -7,16 +7,21 @@ const Routines = () => {
   const [publicRoutines, setPublicRoutines] = useState([]);
 
   const getAllPublicRoutines = async () => {
-    const publicRoutines = await showPublicRoutines();
-    const isPublic = await publicRoutines.filter(
+    const allRoutines = await showPublicRoutines();
+    const routinesSorted = await allRoutines.slice(0, 20);
+    const isPublic = await routinesSorted.filter(
       (ele) => ele.isPublic === true
     );
-    setPublicRoutines(isPublic);
-    return;
+    console.log(isPublic);
+    return isPublic;
   };
 
   useEffect(() => {
-    getAllPublicRoutines();
+    const fetchData = async () => {
+      const data = await getAllPublicRoutines();
+      setPublicRoutines(data);
+    };
+    fetchData();
   }, []);
 
   return (
@@ -28,15 +33,21 @@ const Routines = () => {
           </h2>
         </div>
         <div className={classes['routines-body']}>
-          <ul>
-            {publicRoutines.map((rtn) => (
-              <li key={rtn.id}>
-                Name:{rtn.name}
-                Goal:{rtn.goal}
-                Activities:{rtn.activities}
-              </li>
-            ))}
-          </ul>
+          {publicRoutines.map((routine) => {
+            return (
+              <div className={classes['routines-card']}>
+                <div className={classes['rtn-header']}>
+                  <h2>{routine.name}</h2>
+                </div>
+                <div className={classes['rtn-body']}>
+                  <p>Goal</p>
+                  <h3>{routine.goal}</h3>
+                  <p>Creator</p>
+                  <h3>{routine.creatorName}</h3>
+                </div>
+              </div>
+            );
+          })}
         </div>
       </div>
     </Layout>
@@ -44,3 +55,15 @@ const Routines = () => {
 };
 
 export default Routines;
+
+/*
+{publicRoutines.length ? (
+            <div>
+              {publicRoutines.map((routine) => (
+                <div>{routine.name}</div>
+              ))}
+            </div>
+          ) : (
+            <p>We cannot find any Routine</p>
+          )}
+*/
