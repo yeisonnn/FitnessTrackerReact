@@ -11,7 +11,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  filter: grayscale(33%);
+  /* filter: grayscale(33%); */
 }
 
 .home-container {
@@ -156,7 +156,7 @@
   background-color: #fff;
   display: inline-block;
   margin-right: 5px;
-  background-color: tomato;
+  background-color: #e03131;
   opacity: 0;
 }
 
@@ -166,4 +166,59 @@
 
 .register-btn {
   margin-left: auto;
+}
+
+.questions {
+  width: 100%;
+  min-height: 5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #e03131;
+  color: #fff;
+  font-family: 'Metamorphous', cursive;
+  font-size: 3rem;
+  padding: 0.7rem;
+  text-transform: uppercase;
+}
+
+.description {
+  font-size: 3rem;
+  font-family: 'Metamorphous', cursive;
+}
+
+.description h4 {
+  color: #333;
+  padding: 1rem;
+  text-align: center;
+  text-transform: uppercase;
+  text-shadow: 1px 1px 1px #444;
+  width: 50%;
+  margin: 0 auto;
+}
+
+.description-list {
+  border: 2px solid #000;
+  background-color: #222;
+  font-size: 2rem;
+  color: #fff;
+  padding: 1rem;
+  display: flex;
+  justify-content: center;
+}
+
+.description-list ul {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 1.8rem;
+}
+
+.description-list ul li {
+  cursor: pointer;
+  opacity: 0.8;
+}
+
+.description-list ul li:hover {
+  opacity: 2;
 }
