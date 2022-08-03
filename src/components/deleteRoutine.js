@@ -12,7 +12,7 @@ const DeleteButton = (props) => {
   }
 
   return (
-    <button className="btn btn-danger btn-sm" onClick={handleClick}>
+    <button onClick={handleClick}>
       Delete
     </button>
   );

@@ -1,5 +1,6 @@
-const BASE = 'https://guarded-stream-12358.herokuapp.com/';
 
+// const BASE = 'https://guarded-stream-12358.herokuapp.com/';
+const BASE = 'https://fitnesstrac-kr.herokuapp.com/';
 export async function registerUser(username, password) {
   try {
     const response = await fetch(`${BASE}api/users/register`, {
@@ -58,7 +59,7 @@ export async function showPublicRoutines() {
     try {
       const response = await fetch(`${BASE}api/routines`,)
       const data = await response.json();
-      console.log(data)
+      console.log(data, "This is a data")
       return data
     } catch (error) {
       console.error(error);

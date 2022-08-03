@@ -32,7 +32,7 @@ const EditRoutine = (props) => {
                     </input>
                 </label>
                 <button type="submit">
-                    Create Routine
+                    Edit Routine
                 </button>
             </form>
         </div>
