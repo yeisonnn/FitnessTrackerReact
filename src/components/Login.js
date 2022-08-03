@@ -54,5 +54,4 @@ const Login = (props) => {
     </Layout>
   );
 };
-
 export default Login;
