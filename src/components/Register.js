@@ -13,14 +13,13 @@ const Register = () => {
     event.preventDefault();
     const registrationInfo = await registerUser(username, password);
     const token = registrationInfo.token;
-    setTokenUser(token);
-    const user = registrationInfo.user.username;
-    storeCurrentUser('token', token);
-    storeCurrentUser('username', user);
+    // setTokenUser(token);
+    // const user = registrationInfo.user.username;
+    // storeCurrentUser('token', token);
+    // storeCurrentUser('username', user);
     //resetting value for inputs
     setUsername('');
     setPassword('');
-    console.log(token, user, 'registration *********');
   };
 
   return (

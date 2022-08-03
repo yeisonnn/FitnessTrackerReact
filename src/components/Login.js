@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import classes from './Login.module.css';
-import { storeCurrentUser } from '../utils/auth';
+import { storeCurrentUser, getCurrentData } from '../utils/auth';
 import { loginUser } from '../api';
 import Layout from './Layout';
 
@@ -8,6 +8,7 @@ const Login = (props) => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [tokenUser, setTokenUser] = useState('');
+  const { setUserLogged } = props;
 
   async function handleSubmit(event) {
     event.preventDefault();
@@ -17,9 +18,9 @@ const Login = (props) => {
     const user = loginInfo.user.username;
     storeCurrentUser('token', token);
     storeCurrentUser('username', user);
-
     setUsername('');
     setPassword('');
+    setUserLogged(getCurrentData('username'));
     console.log(loginInfo, 'This is a click');
   }
 
@@ -36,7 +37,7 @@ const Login = (props) => {
         <input
           name="email"
           type="text"
-          placeholder="Email"
+          placeholder="Password"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
         />
