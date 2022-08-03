@@ -9,7 +9,8 @@ const Register = () => {
   const [password, setPassword] = useState('');
   const [tokenUser, setTokenUser] = useState('');
 
-  const registerUserHandler = async () => {
+  const registerUserHandler = async (event) => {
+    event.preventDefault();
     const registrationInfo = await registerUser(username, password);
     const token = registrationInfo.token;
     setTokenUser(token);
@@ -25,18 +26,31 @@ const Register = () => {
   return (
     <Layout>
       <div className={classes['register-main']}>
-        <div className={classes['register-photo']}>image</div>
+        <div className={classes['register-info']}>
+          <h2>Make your Move</h2>
+          <p>
+            Join to our Fantastic Community & and start enjoing all the benefits
+          </p>
+          <p>Sign Up for free!</p>
+        </div>
         <div className={classes['register-form']}>
           <div className={classes['register-login']}>
             <h1>Sign Up</h1>
-            <form className={classes.form}>
+            <form className={classes.form} onSubmit={registerUserHandler}>
               <input
                 type="text"
                 placeholder="Username"
                 id="username"
                 value={username}
+                onChange={(e) => setUsername(e.target.value)}
               />
-              <input type="password" placeholder="Password" />
+              <input
+                type="password"
+                placeholder="Password"
+                id="password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+              />
               <div className={classes['register-btn']}>
                 <button type="submit">Submit</button>
               </div>
@@ -49,23 +63,3 @@ const Register = () => {
 };
 
 export default Register;
-
-/*
-
- <h2>This is the Register</h2>
-      <label>Enter a username</label>
-      <input
-        type="text"
-        id="username"
-        value={username}
-        onChange={(e) => setUsername(e.target.value)}
-      />
-      <label>Enter password</label>
-      <input
-        type="text"
-        id={password}
-        value={password}
-        onChange={(e) => setPassword(e.target.value)}
-      />
-      <button onClick={registerUserHandler}>Login</button>
-*/

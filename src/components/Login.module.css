@@ -1,12 +1,63 @@
 @import url('https://fonts.googleapis.com/css2?family=Metamorphous&display=swap');
 
 .login-body {
-  /* background-image: url('https://images.pexels.com/photos/891252/pexels-photo-891252.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260'); */
+  background: rgb(30, 30, 40);
+  width: 55%;
+  font-family: 'Metamorphous', cursive;
+  padding: 0.7rem;
+  border-radius: 10px;
+  margin-right: 2rem;
+}
+
+.form {
+  padding: 1rem;
+}
+
+.form input {
+  color: white;
+  font-family: inherit;
+  font-weight: 500;
+  font-size: 1.6rem;
+  border-radius: 5px;
+  line-height: 2.2rem;
+  background-color: transparent;
+
+  border: 2px solid #e03131;
+  transition: all 0.3s;
+  padding: 1.3rem;
+  margin-bottom: 1.5rem;
+  width: 100%;
+  box-sizing: border-box;
+  outline: 0;
+}
+
+.form input:focus {
+  border: 2px solid #cc4949;
+}
+
+[type='submit'] {
+  font-family: inherit;
+  width: 100%;
+  background: #cc6666;
+  border-radius: 5px;
+  border: 0;
+  cursor: pointer;
+  color: white;
+  font-size: 24px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  transition: all 0.3s;
+  margin-top: -4px;
+  font-weight: 700;
+}
+[type='submit']:hover {
+  background: #e03131;
+}
+
+/*@import url('https://fonts.googleapis.com/css2?family=Metamorphous&display=swap');
+
+.login-body {
   background-color: #222;
-  /* background-position: center;
-  background-origin: content-box;
-  background-repeat: no-repeat;
-  background-size: cover; */
   min-height: 100vh;
   font-family: 'Metamorphous', cursive;
 }
@@ -72,3 +123,4 @@
   top: -1.2rem;
   font-size: 1.4rem;
 }
+*/

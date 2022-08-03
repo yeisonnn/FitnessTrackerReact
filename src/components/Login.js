@@ -24,34 +24,26 @@ const Login = (props) => {
   }
 
   return (
-    <Layout>
-      <div className={classes['login-body']}>
-        <div className={classes.box}>
-          <form onSubmit={handleSubmit}>
-            <span className={classes['text-center']}>login</span>
-            <div className={classes['input-container']}>
-              <input
-                type="text"
-                value={username}
-                onChange={(e) => setUsername(e.target.value)}
-              />
-              <label>Username</label>
-            </div>
-            <div className={classes['input-container']}>
-              <input
-                type="text"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-              />
-              <label>Password</label>
-            </div>
-            <button type="submit" className={classes.btn}>
-              Login
-            </button>
-          </form>
-        </div>
-      </div>
-    </Layout>
+    <div className={classes['login-body']}>
+      <form className={classes.form} onSubmit={handleSubmit}>
+        <input
+          name="name"
+          type="text"
+          placeholder="Name"
+          value={username}
+          onChange={(e) => setUsername(e.target.value)}
+        />
+        <input
+          name="email"
+          type="text"
+          placeholder="Email"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+        />
+
+        <input type="submit" value="LOGIN" />
+      </form>
+    </div>
   );
 };
 export default Login;
