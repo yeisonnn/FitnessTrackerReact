@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import React, { useState } from 'react';
 import classes from './Home.module.css';
+import Login from './Login';
 
 const Home = () => {
   const [showLogin, setLogin] = useState(true);
@@ -13,25 +14,27 @@ const Home = () => {
           </h1>
           <div>
             <button className={`${classes.btn} ${classes.secondary}`}>
-              <Link to="/login">Sign Up Now!</Link>
+              <Link to="/register">Sign Up Now!</Link>
             </button>
           </div>
           <h3>Stay healthy - Get fit</h3>
-        </div>
-        <div className={classes.info}>
           <ul className={classes['info-list']}>
             <li>
-              <Link to="/routines">See Routines</Link>
+              <Link to="/routines">Routines</Link>
             </li>
             <li>
-              <Link to="/activities">See Activities</Link>
+              <Link to="/activities">Activities</Link>
             </li>
           </ul>
-          <div className={classes['register-btn']}>
-            <button className={`${classes.btn} ${classes.secondary}`}>
-              <Link to="/register">Register Now!</Link>
-            </button>
-          </div>
+        </div>
+        <div className={classes.info}>
+          {showLogin ? (
+            <Login />
+          ) : (
+            <>
+              <h1>Welcome username</h1>
+            </>
+          )}
         </div>
       </div>
     </section>

@@ -1,17 +1,18 @@
 .navbar {
   padding: 2rem;
-  background-color: #333;
+  background-color: #222;
+
   height: 100%;
 }
 
 .list {
   list-style: none;
   color: #fff;
-  font-size: 3.6rem;
+  font-size: 2.4rem;
   display: flex;
   flex-direction: column;
   gap: 2.4rem;
-  margin-left: 2rem;
+  margin-left: 1rem;
   cursor: pointer;
 }
 
@@ -28,6 +29,8 @@
 .list li a {
   text-decoration: none;
   color: #fff;
+  display: flex;
+  gap: 0.6rem;
 }
 .list li::before {
   content: '';
