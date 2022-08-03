@@ -3,6 +3,8 @@ import React, { useState } from 'react';
 import classes from './Home.module.css';
 import Login from './Login';
 import { AiOutlinePlus } from 'react-icons/ai';
+import { AiOutlineCopyright } from 'react-icons/ai';
+import logo from '../images/logo.svg';
 
 const Home = () => {
   const [showLogin, setLogin] = useState(true);
@@ -40,6 +42,7 @@ const Home = () => {
           </div>
         </div>
       </section>
+
       <div className={classes.questions}>
         <h2>Have questions?</h2>
       </div>
@@ -69,6 +72,37 @@ const Home = () => {
           </ul>
         </div>
       </div>
+      <div className={classes.divider}></div>
+      <footer className={classes.footer}>
+        <div className={classes['footer-main']}>
+          <div>
+            <img className={classes['footer-logo']} src={logo} alt="logo" />
+          </div>
+          <div>
+            <h3 className={classes['footer-title']}>info</h3>
+            <ul className={classes['footer-list']}>
+              <li>Our Mission</li>
+              <li>Contact Us</li>
+              <li>Help & FAQs</li>
+              <li>Privacy Policy</li>
+              <li>Terms of Service</li>
+            </ul>
+          </div>
+          <div>
+            <h3 className={classes['footer-title']}>Help us</h3>
+            <ul className={classes['footer-list']}>
+              <li>Donate</li>
+              <li>share our Work</li>
+            </ul>
+          </div>
+          <div>
+            <h3 className={classes['footer-title']}>Resources</h3>
+            <ul className={classes['footer-list']}>
+              <li>API Docs</li>
+            </ul>
+          </div>
+        </div>
+      </footer>
     </>
   );
 };
