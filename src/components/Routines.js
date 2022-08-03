@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
-
 import { showPublicRoutines } from '../api';
+import Layout from './Layout';
+import classes from './Routines.module.css';
 
 const Routines = () => {
   const [publicRoutines, setPublicRoutines] = useState([]);
@@ -19,16 +20,24 @@ const Routines = () => {
   }, []);
 
   return (
-    <>
-      <h2>this is public routines</h2>
-      <ul>
-        {publicRoutines.map((rtn) => (
-          <li key={rtn.id}>
-            {rtn.name}: {rtn.goal}
-          </li>
-        ))}
-      </ul>
-    </>
+    <Layout>
+      <div className={classes['routines-main']}>
+        <div className={classes['routines-header']}>
+          <h2>
+            Public <span>Routines</span>
+          </h2>
+        </div>
+        <div className={classes['routines-body']}>
+          <ul>
+            {publicRoutines.map((rtn) => (
+              <li key={rtn.id}>
+                {rtn.name}: {rtn.goal}
+              </li>
+            ))}
+          </ul>
+        </div>
+      </div>
+    </Layout>
   );
 };
 
