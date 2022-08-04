@@ -82,7 +82,7 @@ export async function showPublicRoutines() {
 
 export async function showRoutinesByUser(username, token) {
   try {
-    const response = await fetch(`${BASE}api/:${username}/routines`, {
+    const response = await fetch(`${BASE}api/${username}/routines`, {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',
@@ -101,7 +101,7 @@ export async function showRoutinesByUser(username, token) {
 
 export async function showPublicRoutinesByUser(username) {
   try {
-    const response = await fetch(`${BASE}api/:${username}/routines`, {
+    const response = await fetch(`${BASE}api/${username}/routines`, {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',
@@ -155,7 +155,7 @@ export async function createActivity(name, description, token) {
 
 export async function editActivity(name, description, token, activityId) {
   try {
-    const response = await fetch(`${BASE}api/activities/:${activityId}`, {
+    const response = await fetch(`${BASE}api/activities/${activityId}`, {
       method: 'PATCH',
       headers: {
         'Content-Type': 'application/json',
@@ -179,7 +179,7 @@ export async function editActivity(name, description, token, activityId) {
 export async function getAllPublicRoutinesbyActivityId(activityId) {
   try {
     const response = await fetch(
-      `${BASE}api/activities/:${activityId}/routines`
+      `${BASE}api/activities/${activityId}/routines`
     );
 
     if (!response.ok) {
@@ -278,7 +278,7 @@ export async function attachActivityToRoutine(
 ) {
   try {
     const response = await fetch(
-      `${BASE}api/routines/:${routineId}/activities`,
+      `${BASE}api/routines/${routineId}/activities`,
       {
         method: 'POST',
         headers: {
@@ -292,11 +292,12 @@ export async function attachActivityToRoutine(
         }),
       }
     );
-
+      console.log(response)
     if (!response.ok) {
       throw new Error('Something went Wrong');
     }
     const data = await response.json();
+    console.log(data)
     return data;
   } catch (error) {
     console.error(error.message);
@@ -306,7 +307,7 @@ export async function attachActivityToRoutine(
 export async function updateRoutineActivity(count, duration, token) {
   try {
     const response = await fetch(
-      `${BASE}api/routine_activities/:routineActivityId`,
+      `${BASE}api/routine_activities/routineActivityId`,
       {
         method: 'PATCH',
         headers: {
@@ -333,7 +334,7 @@ export async function updateRoutineActivity(count, duration, token) {
 export async function deleteRoutineActivity(token) {
   try {
     const response = await fetch(
-      `${BASE}api/routine_activities/:routineActivityId`,
+      `${BASE}api/routine_activities/routineActivityId`,
       {
         method: 'DELETE',
         headers: {

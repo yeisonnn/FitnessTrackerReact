@@ -36,13 +36,16 @@ const MyRoutines = () => {
     fetchData();
   }, []);
 
+
   const deleteRoutineHandler = async (event) => {
+    event.preventDefault();
     const routineId = event.target.dataset.id;
     const token = getCurrentData('token');
     await deleteRoutine(token, routineId);
   };
 
   const updateRoutineHandler = (event) => {
+    event.preventDefault();
     setShowUpdateRoutine(true);
     setRoutineId(event.target.dataset.id);
     console.log(routineId);
