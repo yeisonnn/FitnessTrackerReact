@@ -6,7 +6,7 @@ import { deleteRoutine } from '../api/index';
 import Layout from './Layout';
 import { getCurrentData } from '../utils/auth';
 import classes from './MyRoutines.module.css';
-import { useNavigate } from 'react-router-dom';
+import AllActivities from './AllActivities';
 
 const MyRoutines = () => {
   const [privateRoutine, setPrivateRoutines] = useState([]);
@@ -85,6 +85,7 @@ const MyRoutines = () => {
                   <p>Creator</p>
                   <h3>{routine.creatorName}</h3>
                 </div>
+                <AllActivities />
                 <div className={classes['rtn-buttons']}>
                   <button onClick={deleteRoutineHandler} data-id={routine.id}>
                     Delete

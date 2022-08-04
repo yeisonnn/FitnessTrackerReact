@@ -36,18 +36,3 @@ const Activities = () => {
 };
 
 export default Activities;
-
-/*
-    <Layout>
-      <h1>This is the activities</h1>
-      <ul>
-        {allActivities.map((rtn) => (
-          <li key={rtn.id}>
-            {rtn.name}: {rtn.description}
-          </li>
-        ))}
-      </ul>
-      <div>
-        <CreateActivities />
-      </div>
-*/
