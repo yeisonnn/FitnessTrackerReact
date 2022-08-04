@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Metamorphous&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Pangolin&display=swap');
 
 .activities-main {
   padding: 2rem;
@@ -6,7 +6,6 @@
 
 .activities-header {
   box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
-
   margin-bottom: 2rem;
 }
 
@@ -21,11 +20,23 @@
 }
 
 .activities-header span {
-  color: #e67700;
+  color: #e03131;
   text-shadow: 2px 2px 1px rgba(0, 0, 0, 0.4);
   font-size: 7rem;
-  font-family: 'Shadows Into Light', cursive;
+  font-family: 'Pangolin', cursive;
+
   letter-spacing: 2px;
+}
+
+.activities-info {
+  font-size: 1.8rem;
+}
+
+.activities-info p:first-of-type {
+  background-color: #e67700;
+  padding: 0.5rem;
+  color: #fff;
+  margin-bottom: 2rem;
 }
 
 .activities-form {
@@ -37,8 +48,39 @@
   font-family: 'Metamorphous', cursive;
 }
 
+.activities-form select {
+  font-family: 'Metamorphous', cursive;
+  font-size: 1.6rem;
+  padding: 0.7rem;
+}
+
 .option {
   font-family: 'Metamorphous', cursive;
   padding: 1rem;
+  font-size: 1.6rem;
+}
+
+.activity-info {
+  margin-top: 3rem;
+  margin-bottom: 1rem;
+}
+
+.activity-card {
+  padding: 2rem;
+
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset,
+    rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset;
+}
+
+.activity-card h2 {
+  font-size: 3rem;
+  color: #e03131;
+}
+
+.activity-card h3 {
   font-size: 2rem;
+}
+
+.activity-card h3:first-of-type {
+  margin-bottom: 2rem;
 }
