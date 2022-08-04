@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import { storeCurrentUser } from '../utils/auth';
 import { registerUser } from '../api';
 import Layout from './Layout';
 import classes from './Register.module.css';
@@ -8,7 +7,6 @@ import { useNavigate } from 'react-router-dom';
 const Register = () => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
-  const [tokenUser, setTokenUser] = useState('');
   const navigate = useNavigate();
 
   const registerUserHandler = async (event) => {
