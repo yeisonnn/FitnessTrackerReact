@@ -8,7 +8,7 @@ const Routines = () => {
 
   const getAllPublicRoutines = async () => {
     const allRoutines = await showPublicRoutines();
-    const routinesSorted = await allRoutines.slice(0, 20);
+    const routinesSorted = await allRoutines.slice(0, 30);
     const isPublic = await routinesSorted.filter(
       (ele) => ele.isPublic === true
     );
@@ -35,7 +35,7 @@ const Routines = () => {
         <div className={classes['routines-body']}>
           {publicRoutines.map((routine) => {
             return (
-              <div className={classes['routines-card']}>
+              <div className={classes['routines-card']} key={routine.id}>
                 <div className={classes['rtn-header']}>
                   <h2>{routine.name}</h2>
                 </div>

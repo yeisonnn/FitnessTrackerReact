@@ -1,8 +1,7 @@
 .navbar {
   padding: 2rem;
   background-color: #222;
-
-  height: 100%;
+  min-height: 87vh;
 }
 
 .list {

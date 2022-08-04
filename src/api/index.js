@@ -243,18 +243,27 @@ export async function editRoutine(name, goal, isPublic, routineId, token) {
   }
 }
 
+//http://fitnesstrac-kr.herokuapp.com/api/routines/6
+//`${BASE}api/routines/:${routineId}`
+
 export async function deleteRoutine(token, routineId) {
   try {
-    const response = await fetch(`${BASE}api/routines/:${routineId}`, {
-      method: 'DELETE',
-      headers: {
-        'Content-Type': 'application/json',
-        Authorization: `Bearer ${token}`,
-      },
-    });
+    const response = await fetch(
+      `http://fitnesstrac-kr.herokuapp.com/api/routines/${routineId}`,
+      {
+        method: 'DELETE',
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${token}`,
+        },
+      }
+    );
     if (!response.ok) {
       throw new Error('Something went Wrong');
     }
+    const data = await response.json();
+    console.log(data);
+    return data;
   } catch (error) {
     console.error(error.message);
   }

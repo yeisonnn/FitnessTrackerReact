@@ -7,7 +7,8 @@ const CreateRoutine = (props) => {
   const token = getCurrentData('token');
   const [name, setName] = useState('');
   const [goal, setGoal] = useState('');
-  const [isPublic, setIsPublic] = useState(false);
+  const [isPublic, setIsPublic] = useState(true);
+  const { click } = props;
 
   async function handleSubmit(event) {
     event.preventDefault();
@@ -18,6 +19,11 @@ const CreateRoutine = (props) => {
   }
   return (
     <div className={classes['login-body']}>
+      <div className={classes.close}>
+        <button type="button" onClink={click}>
+          X
+        </button>
+      </div>
       <form className={classes.form} onSubmit={handleSubmit}>
         <input
           type="text"
