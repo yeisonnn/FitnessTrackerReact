@@ -7,8 +7,8 @@ import classes from './Activities.module.css';
 const Activities = () => {
   const [allActivities, setAllActivities] = useState([]);
   const getAllActivities = async () => {
-    const allActivitiesFecth = await getActivities();
-    const transformedActivities = await allActivitiesFecth.slice(0, 99);
+    const allActivitiesFetch = await getActivities();
+    const transformedActivities = await allActivitiesFetch.slice(0, 99);
     return setAllActivities(transformedActivities);
   };
 

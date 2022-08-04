@@ -2,13 +2,20 @@ import React, { useState } from 'react';
 import { updateRoutineActivity } from '../api';
 import { getCurrentData } from '../utils/auth';
 
-const UpdateRoutineActivity = () => {
+const UpdateRoutineActivity = async () => {
     const [count, setCount] = useState('')
     const [duration, setDuration] = useState('')
     const token = getCurrentData("token")
 
+    async function handleSubmit(event){
+      event.preventDefault();
+      const updatedRoutineActivity = await updateRoutineActivity (count, duration, token);
+      setCount('');
+      setDuration('');
+      console.log(updatedRoutineActivity, "This is the updated RoutineActivity")
+    }
 
-   await updateRoutineActivity (count, duration, token)
+   
    return(
     <div>
       <form onSubmit={handleSubmit}>
