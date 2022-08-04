@@ -20,7 +20,7 @@ const AllActivities = (props) => {
       <select id="activities" name="activities">
         {allActivities.map((act) => {
           return (
-            <option className={classes.option} value={act.name}>
+            <option className={classes.option} value={act.name} key={act.id}>
               {act.name}
             </option>
           );
