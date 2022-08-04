@@ -1,7 +1,7 @@
-import React, { useState, useEffect, useCallback } from 'react';
+import React, { useState, useEffect} from 'react';
 import { showPublicRoutines } from '../api';
-import CreateRoutine from './CreateRoutines';
-import EditRoutine from './EditRoutine';
+import CreateRoutine from './createRoutines';
+import EditRoutine from './editRoutine';
 import { deleteRoutine } from '../api/index';
 import Layout from './Layout';
 import { getCurrentData } from '../utils/auth';
