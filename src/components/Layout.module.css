@@ -8,6 +8,7 @@
 
 .layout-main {
   width: 100%;
+  min-height: 100vh;
   font-family: 'Metamorphous', cursive;
   display: grid;
   grid-template-rows: 13vh 77vh;

@@ -9,6 +9,22 @@
   margin-right: 2rem;
 }
 
+.close {
+  padding: 0.5rem;
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 1px;
+}
+
+.close button {
+  padding: 0.4rem;
+  font-family: inherit;
+  background-color: #e03131;
+  color: #fff;
+  cursor: pointer;
+  border: none;
+}
+
 .form {
   padding: 1rem;
 }
