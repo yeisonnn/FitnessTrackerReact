@@ -9,6 +9,8 @@ import classes from './MyRoutines.module.css';
 import AllActivities from './AllActivities';
 import { getActivities } from '../api';
 import { attachActivityToRoutine } from '../api';
+import { useNavigate } from 'react-router-dom';
+
 // import UpdateRoutineActivity from './editActivityRoutine';
 // import DeleteRoutineActivity from './deleteActivityRoutine';
 
@@ -23,6 +25,7 @@ const MyRoutines = () => {
   const [loadingPage, setLoadingPage] = useState(false);
   const username = getCurrentData('username');
   const token = getCurrentData('token');
+  const navigate = useNavigate();
 
   const getAllPublicRoutines = async () => {
     const publicRoutines = await showPublicRoutines();
@@ -47,18 +50,22 @@ const MyRoutines = () => {
     const routineId = event.target.dataset.id;
     const token = getCurrentData('token');
     await deleteRoutine(token, routineId);
+    navigate(0);
   };
 
   const updateRoutineHandler = (event) => {
     event.preventDefault();
     setShowUpdateRoutine(true);
     setRoutineId(event.target.dataset.id);
+    navigate(0);
   };
 
   const attachActivityToRoutineHandler = async (e) => {
     setRoutineId(e.target.dataset.rtnid);
     await attachActivityToRoutine(token, actId, count, duration, routineId);
   };
+
+  console.log(privateRoutine);
 
   return (
     <Layout>
