@@ -1,8 +1,7 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { showPublicRoutines } from '../api';
 import CreateRoutine from './CreateRoutines';
 import EditRoutine from './EditRoutine';
-import DeleteButton from './DeleteRoutine';
 import { deleteRoutine } from '../api/index';
 import Layout from './Layout';
 import { getCurrentData } from '../utils/auth';
@@ -11,6 +10,7 @@ import classes from './MyRoutines.module.css';
 const MyRoutines = () => {
   const [privateRoutine, setPrivateRoutines] = useState([]);
   const [showCreateRoutine, setShowCreateRoutine] = useState(false);
+  const [showUpdateRoutine, setShowUpdateRoutine] = useState(false);
   const username = getCurrentData('username');
 
   const getAllPublicRoutines = async () => {
@@ -19,8 +19,6 @@ const MyRoutines = () => {
     const myRoutines = publicRoutines.filter(
       (routine) => routine.creatorName === username
     );
-
-    console.log('my routines', myRoutines);
     return myRoutines;
   };
 
@@ -28,7 +26,6 @@ const MyRoutines = () => {
     const fetchData = async () => {
       const data = await getAllPublicRoutines();
       setPrivateRoutines(data);
-      console.log(privateRoutine, '*****');
     };
     fetchData();
   }, []);
@@ -57,6 +54,12 @@ const MyRoutines = () => {
         </div>
       ) : null}
 
+      {showUpdateRoutine ? (
+        <div className={classes['myRtn-modal']}>
+          <EditRoutine />
+        </div>
+      ) : null}
+
       <div className={classes['routines-body']}>
         {privateRoutine.map((routine) => {
           return (
@@ -74,7 +77,7 @@ const MyRoutines = () => {
                 <button onClick={deleteRoutineHandler} data-id={routine.id}>
                   Delete
                 </button>
-                <button>Edit</button>
+                <button onClick={() => console.log('button edit')}>Edit</button>
               </div>
             </div>
           );
