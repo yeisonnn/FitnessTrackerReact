@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { getActivities } from '../api';
-import CreateActivities from './CreateActivities';
+import CreateActivities from './createActivities';
 import Layout from './Layout';
 import classes from './Activities.module.css';
 import AllActivities from './AllActivities';
@@ -20,6 +20,7 @@ const Activities = () => {
   }, []);
 
   const activityNameHandler = (event) => {
+    event.preventDefault();
     setActivityName(event.target.value);
     console.log(activityName);
     const activitiesFiltered = [...allActivities];
