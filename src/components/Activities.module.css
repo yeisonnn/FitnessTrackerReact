@@ -1,5 +1,33 @@
 @import url('https://fonts.googleapis.com/css2?family=Metamorphous&display=swap');
 
+.activities-main {
+  padding: 2rem;
+}
+
+.activities-header {
+  box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+
+  margin-bottom: 2rem;
+}
+
+.activities-header h2 {
+  font-size: 4rem;
+  color: #666;
+  background-color: hsl(210, 16%, 96%);
+
+  /* clip-path: polygon(5% 0%, 100% 0%, 95% 100%, 0% 100%); */
+  text-align: center;
+  text-shadow: 1px 1px 1px #999;
+}
+
+.activities-header span {
+  color: #e67700;
+  text-shadow: 2px 2px 1px rgba(0, 0, 0, 0.4);
+  font-size: 7rem;
+  font-family: 'Shadows Into Light', cursive;
+  letter-spacing: 2px;
+}
+
 .activities-form {
   width: 100%;
   padding: 1.6rem 2rem;

@@ -1,7 +1,8 @@
 .navbar {
   padding: 2rem;
-  background-color: #222;
-  min-height: 87vh;
+  background-image: linear-gradient(to right, #434343 0%, black 100%);
+  width: 100%;
+  height: 100%;
 }
 
 .list {
@@ -44,4 +45,31 @@
 
 .list li:hover::before {
   width: 90%;
+}
+
+.signup {
+  font-family: 'Metamorphous', cursive;
+  padding: 0.7rem 1rem;
+  border: 1px solid #fff;
+  cursor: pointer;
+  background-color: transparent;
+  color: #fff;
+  transition: all 0.3s;
+  border-radius: 5px;
+  font-size: 1.6rem;
+}
+
+.signup:hover {
+  background-image: linear-gradient(to right, #141e30, #243b55);
+  color: #fff;
+  border: none;
+}
+
+@media screen and (max-width: 770px) {
+  .signup {
+    width: 30%;
+  }
+  .list li:hover::before {
+    width: 28%;
+  }
 }
