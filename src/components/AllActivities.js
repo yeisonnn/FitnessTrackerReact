@@ -10,26 +10,23 @@ const AllActivities = (props) => {
     const allActivitiesFetch = await getActivities();
     const transformedActivities = await allActivitiesFetch.slice(0, 99);
     return setAllActivities(transformedActivities);
-
   };
   useEffect(() => {
     getAllActivities();
   }, []);
-
-  
 
   return (
     <form className={classes['allActivities-form']}>
       <select id="activities" name="activities">
         {allActivities.map((act) => {
           return (
-              <option className={classes.option} value={act.name}>
+            <option className={classes.option} value={act.name}>
               {act.name}
             </option>
           );
         })}
       </select>
-      <AttachActivityToRoutine routineId = {routineId}/>
+      <AttachActivityToRoutine routineId={routineId} />
     </form>
   );
 };

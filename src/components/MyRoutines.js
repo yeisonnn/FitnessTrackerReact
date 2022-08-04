@@ -24,7 +24,7 @@ const MyRoutines = () => {
     const myRoutines = publicRoutines.filter(
       (routine) => routine.creatorName === username
     );
-    console.log(myRoutines)
+    console.log(myRoutines);
     return myRoutines;
   };
 
@@ -88,22 +88,22 @@ const MyRoutines = () => {
                   <p>Creator</p>
                   <h3>{routine.creatorName}</h3>
                   <p>Activities</p>
-                  <div className={classes["activitycontainer"]}>
-                  {routine.activities.map((activity, indx)=>{
-                    return(
-                  <div key = "routineActivityIdKey">
-                  <h3>Activity:{activity.name}</h3>
-                  <h3>Description:{activity.description}</h3>
-                  <h3>Duration:{activity.duration}</h3>
-                  <h3>Count:{activity.count}</h3>
-                  <UpdateRoutineActivity/>
-                  <DeleteRoutineActivity/>
-                  </div>
-                    )
-                  })}
+                  <div className={classes['activitycontainer']}>
+                    {routine.activities.map((activity, indx) => {
+                      return (
+                        <div key="routineActivityIdKey">
+                          <h3>Activity:{activity.name}</h3>
+                          <h3>Description:{activity.description}</h3>
+                          <h3>Duration:{activity.duration}</h3>
+                          <h3>Count:{activity.count}</h3>
+                          <UpdateRoutineActivity />
+                          <DeleteRoutineActivity />
+                        </div>
+                      );
+                    })}
                   </div>
                 </div>
-                <AllActivities routineId = {routineId}/>
+                <AllActivities routineId={routineId} />
                 <div className={classes['rtn-buttons']}>
                   <button onClick={deleteRoutineHandler} data-id={routine.id}>
                     Delete
