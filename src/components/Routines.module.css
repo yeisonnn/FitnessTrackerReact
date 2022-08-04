@@ -73,3 +73,7 @@
   text-align: center;
   margin-bottom: 4px;
 }
+.activitycontainer{
+  height: 100px;
+  overflow: scroll;
+}

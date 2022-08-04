@@ -12,6 +12,7 @@ const Routines = () => {
     const isPublic = await routinesSorted.filter(
       (ele) => ele.isPublic === true
     );
+    console.log(publicRoutines);
     console.log(isPublic);
     return isPublic;
   };
@@ -23,7 +24,7 @@ const Routines = () => {
     };
     fetchData();
   }, []);
-
+  
   return (
     <Layout>
       <div className={classes['routines-main']}>
@@ -44,6 +45,19 @@ const Routines = () => {
                   <h3>{routine.goal}</h3>
                   <p>Creator</p>
                   <h3>{routine.creatorName}</h3>
+                  <p>Activities</p>
+                  <div className={classes["activitycontainer"]}>
+                  {routine.activities.map((activity, indx)=>{
+                    return(
+                  <div>
+                  <h3>Activity:{activity.name}</h3>
+                  <h3>Description:{activity.description}</h3>
+                  <h3>Duration:{activity.duration}</h3>
+                  <h3>Count:{activity.count}</h3>
+                  </div>
+                    )
+                  })}
+                  </div>
                 </div>
               </div>
             );
