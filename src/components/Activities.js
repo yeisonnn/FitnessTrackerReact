@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { getActivities } from '../api';
-import CreateActivities from './createActivities';
+import CreateActivities from './CreateActivities';
 import Layout from './Layout';
 import classes from './Activities.module.css';
 
