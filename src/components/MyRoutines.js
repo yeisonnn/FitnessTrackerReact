@@ -7,16 +7,22 @@ import Layout from './Layout';
 import { getCurrentData } from '../utils/auth';
 import classes from './MyRoutines.module.css';
 import AllActivities from './AllActivities';
-import UpdateRoutineActivity from './editActivityRoutine';
-import DeleteRoutineActivity from './deleteActivityRoutine';
+import { getActivities } from '../api';
+import { attachActivityToRoutine } from '../api';
+// import UpdateRoutineActivity from './editActivityRoutine';
+// import DeleteRoutineActivity from './deleteActivityRoutine';
 
 const MyRoutines = () => {
   const [privateRoutine, setPrivateRoutines] = useState([]);
   const [showCreateRoutine, setShowCreateRoutine] = useState(false);
   const [showUpdateRoutine, setShowUpdateRoutine] = useState(false);
   const [routineId, setRoutineId] = useState('');
+  const [actId, setActId] = useState('');
+  const [count, setCount] = useState('');
+  const [duration, setDuration] = useState('');
   const [loadingPage, setLoadingPage] = useState(false);
   const username = getCurrentData('username');
+  const token = getCurrentData('token');
 
   const getAllPublicRoutines = async () => {
     const publicRoutines = await showPublicRoutines();
@@ -36,7 +42,6 @@ const MyRoutines = () => {
     fetchData();
   }, []);
 
-
   const deleteRoutineHandler = async (event) => {
     event.preventDefault();
     const routineId = event.target.dataset.id;
@@ -48,7 +53,11 @@ const MyRoutines = () => {
     event.preventDefault();
     setShowUpdateRoutine(true);
     setRoutineId(event.target.dataset.id);
-    console.log(routineId);
+  };
+
+  const attachActivityToRoutineHandler = async (e) => {
+    setRoutineId(e.target.dataset.rtnid);
+    await attachActivityToRoutine(token, actId, count, duration, routineId);
   };
 
   return (
@@ -91,22 +100,27 @@ const MyRoutines = () => {
                   <p>Creator</p>
                   <h3>{routine.creatorName}</h3>
                   <p>Activities</p>
-                  <div className={classes['activitycontainer']}>
-                    {routine.activities.map((activity, indx) => {
-                      return (
-                        <div key="routineActivityIdKey">
-                          <h3>Activity:{activity.name}</h3>
-                          <h3>Description:{activity.description}</h3>
-                          <h3>Duration:{activity.duration}</h3>
-                          <h3>Count:{activity.count}</h3>
-                          <UpdateRoutineActivity />
-                          <DeleteRoutineActivity />
-                        </div>
-                      );
-                    })}
-                  </div>
                 </div>
-                <AllActivities routineId={routineId} />
+                <AllActivities setActId={setActId} />
+                <div>
+                  <label>Count</label>
+                  <input
+                    type="text"
+                    onChange={(e) => setCount(e.target.value)}
+                  />
+                  <label>Duration</label>
+                  <input
+                    type="text"
+                    onChange={(e) => setDuration(e.target.value)}
+                  />
+                  <button
+                    data-rtnId={routine.id}
+                    onClick={attachActivityToRoutineHandler}
+                  >
+                    Attach routine
+                  </button>
+                </div>
+
                 <div className={classes['rtn-buttons']}>
                   <button onClick={deleteRoutineHandler} data-id={routine.id}>
                     Delete
@@ -127,3 +141,53 @@ const MyRoutines = () => {
 };
 
 export default MyRoutines;
+
+/*
+{privateRoutine.length ? (
+        <div className={classes['routines-body']}>
+          {privateRoutine.map((routine) => {
+            return (
+              <div className={classes['routines-card']} key={routine.id}>
+                <div className={classes['rtn-header']}>
+                  <h2>{routine.name}</h2>
+                </div>
+                <div className={classes['rtn-body']}>
+                  <p>Goal</p>
+                  <h3>{routine.goal}</h3>
+                  <p>Creator</p>
+                  <h3>{routine.creatorName}</h3>
+                  <p>Activities</p>
+
+                  <div className={classes['activitycontainer']}>
+                    {routine.activities.map((activity, indx) => {
+                      return (
+                        <div key="routineActivityIdKey">
+                          <h3>Activity:{activity.name}</h3>
+                          <h3>Description:{activity.description}</h3>
+                          <h3>Duration:{activity.duration}</h3>
+                          <h3>Count:{activity.count}</h3>
+                          <UpdateRoutineActivity />
+                          <DeleteRoutineActivity />
+                        </div>
+                      );
+                    })}
+                  </div>
+                </div>
+                <AllActivities routineId={routineId} />
+
+                <div className={classes['rtn-buttons']}>
+                  <button onClick={deleteRoutineHandler} data-id={routine.id}>
+                    Delete
+                  </button>
+                  <button onClick={updateRoutineHandler} data-id={routine.id}>
+                    Edit
+                  </button>
+                </div>
+              </div>
+            );
+          })}
+        </div>
+      ) : (
+        <p>There no private routines</p>
+      )}
+*/
