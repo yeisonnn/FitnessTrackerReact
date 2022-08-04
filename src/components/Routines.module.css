@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Shadows+Into+Light&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Pangolin&display=swap');
 
 .routines-main {
   padding: 2rem;
@@ -24,7 +24,7 @@
   color: #e67700;
   text-shadow: 2px 2px 1px rgba(0, 0, 0, 0.4);
   font-size: 7rem;
-  font-family: 'Shadows Into Light', cursive;
+  font-family: 'Pangolin', cursive;
   letter-spacing: 2px;
 }
 .routines-body {
@@ -73,7 +73,7 @@
   text-align: center;
   margin-bottom: 4px;
 }
-.activitycontainer{
+.activitycontainer {
   height: 100px;
   overflow: scroll;
 }
