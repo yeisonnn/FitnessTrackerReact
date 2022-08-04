@@ -4,7 +4,7 @@ import { getCurrentData } from '../utils/auth';
 import classes from './EditRoutine.module.css';
 
 const EditRoutine = (props) => {
-  const { routineId } = props;
+  const { setShowUpdateRoutine, routineId } = props;
   const token = getCurrentData('token');
   const [name, setName] = useState('');
   const [goal, setGoal] = useState('');
@@ -19,14 +19,16 @@ const EditRoutine = (props) => {
       routineId,
       token
     );
+    console.log(activities, '********* aqui en edit routines');
     setName('');
     setGoal('');
-    console.log(activities, 'This is submitted activities');
   }
   return (
     <div className={classes['login-body']}>
       <div className={classes.close}>
-        <button type="button">X</button>
+        <button type="button" onClick={() => setShowUpdateRoutine(false)}>
+          X
+        </button>
       </div>
       <form className={classes.form} onSubmit={handleSubmit}>
         <input

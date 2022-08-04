@@ -220,7 +220,7 @@ export async function createRoutine(name, goal, isPublic, token) {
 
 export async function editRoutine(name, goal, isPublic, routineId, token) {
   try {
-    const response = await fetch(`${BASE}api/routines/:${routineId}`, {
+    const response = await fetch(`${BASE}api/routines/${routineId}`, {
       method: 'PATCH',
       headers: {
         'Content-Type': 'application/json',
