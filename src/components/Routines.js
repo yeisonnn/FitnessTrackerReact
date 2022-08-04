@@ -49,7 +49,7 @@ const Routines = () => {
                   <div className={classes["activitycontainer"]}>
                   {routine.activities.map((activity, indx)=>{
                     return(
-                  <div>
+                  <div key = "activityIdKey">
                   <h3>Activity:{activity.name}</h3>
                   <h3>Description:{activity.description}</h3>
                   <h3>Duration:{activity.duration}</h3>
