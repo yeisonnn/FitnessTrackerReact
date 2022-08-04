@@ -1,0 +1,16 @@
+@import url('https://fonts.googleapis.com/css2?family=Metamorphous&display=swap');
+
+.activities-form {
+  width: 100%;
+  padding: 1.6rem 2rem;
+  border: none;
+  border-radius: 4px;
+  background-color: #f1f1f1;
+  font-family: 'Metamorphous', cursive;
+}
+
+.option {
+  font-family: 'Metamorphous', cursive;
+  padding: 1rem;
+  font-size: 2rem;
+}
