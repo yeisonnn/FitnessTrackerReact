@@ -60,8 +60,16 @@
 }
 
 .signup:hover {
-  /* background-image: linear-gradient(to right, #0f0c29, #302b63, #24243e); */
   background-image: linear-gradient(to right, #141e30, #243b55);
   color: #fff;
   border: none;
+}
+
+@media screen and (max-width: 770px) {
+  .signup {
+    width: 30%;
+  }
+  .list li:hover::before {
+    width: 28%;
+  }
 }

@@ -337,3 +337,45 @@
   background-color: #f8f9fa;
   color: #333;
 }
+
+@media screen and (max-width: 1100px) {
+  html {
+    font-size: 50%;
+  }
+}
+
+@media screen and (max-width: 1027px) {
+  .mainHome {
+    background-repeat: no-repeat;
+    background-position: top;
+    justify-content: center;
+    align-items: flex-start;
+    min-height: 70%;
+    border: 2px solid green;
+  }
+
+  .home-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    border: 2px solid pink;
+  }
+
+  .info {
+    justify-content: end;
+    align-items: end;
+  }
+
+  .footer-main {
+    width: 90%;
+  }
+}
+
+@media screen and (max-width: 750px) {
+  html {
+    font-size: 40%;
+  }
+  .mainHome {
+    height: 100%;
+  }
+}

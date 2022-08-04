@@ -20,17 +20,24 @@ const Activities = () => {
 
   return (
     <Layout>
-      <form className={classes['activities-form']}>
-        <select id="activities" name="activities">
-          {allActivities.map((act) => {
-            return (
-              <option className={classes.option} value={act.name}>
-                {act.name}
-              </option>
-            );
-          })}
-        </select>
-      </form>
+      <div className={classes['activities-main']}>
+        <div className={classes['activities-header']}>
+          <h2>
+            All <span>Activities</span>
+          </h2>
+        </div>
+        <form className={classes['activities-form']}>
+          <select id="activities" name="activities">
+            {allActivities.map((act) => {
+              return (
+                <option className={classes.option} value={act.name}>
+                  {act.name}
+                </option>
+              );
+            })}
+          </select>
+        </form>
+      </div>
     </Layout>
   );
 };
