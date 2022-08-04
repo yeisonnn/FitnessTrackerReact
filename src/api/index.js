@@ -130,6 +130,7 @@ export async function getActivities() {
   }
 }
 
+
 export async function createActivity(name, description, token) {
   try {
     const response = await fetch(`${BASE}api/activities`, {
