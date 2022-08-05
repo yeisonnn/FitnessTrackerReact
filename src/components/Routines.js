@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { showPublicRoutines } from '../api';
 import Layout from './Layout';
 import classes from './Routines.module.css';
+import { Link } from 'react-router-dom';
+import { GiClick } from 'react-icons/gi';
 
 const Routines = () => {
   const [publicRoutines, setPublicRoutines] = useState([]);
@@ -24,7 +26,9 @@ const Routines = () => {
     };
     fetchData();
   }, []);
-  
+
+  console.log(publicRoutines);
+
   return (
     <Layout>
       <div className={classes['routines-main']}>
@@ -44,19 +48,26 @@ const Routines = () => {
                   <p>Goal</p>
                   <h3>{routine.goal}</h3>
                   <p>Creator</p>
-                  <h3>{routine.creatorName}</h3>
+                  <h3>
+                    <Link
+                      to={`/${routine.creatorName}/activities`}
+                      className={classes['link-user']}
+                    >
+                      {routine.creatorName} <GiClick />
+                    </Link>
+                  </h3>
                   <p>Activities</p>
-                  <div className={classes["activitycontainer"]}>
-                  {routine.activities.map((activity, indx)=>{
-                    return(
-                  <div key = "activityIdKey">
-                  <h3>Activity:{activity.name}</h3>
-                  <h3>Description:{activity.description}</h3>
-                  <h3>Duration:{activity.duration}</h3>
-                  <h3>Count:{activity.count}</h3>
-                  </div>
-                    )
-                  })}
+                  <div className={classes['activitycontainer']}>
+                    {routine.activities.map((activity, indx) => {
+                      return (
+                        <div key="activityIdKey">
+                          <h3>Activity:{activity.name}</h3>
+                          <h3>Description:{activity.description}</h3>
+                          <h3>Duration:{activity.duration}</h3>
+                          <h3>Count:{activity.count}</h3>
+                        </div>
+                      );
+                    })}
                   </div>
                 </div>
               </div>

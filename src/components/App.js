@@ -7,6 +7,7 @@ import MyRoutines from './MyRoutines';
 import ViewRoutines from './ViewRoutines';
 import Activities from './Activities';
 import Home from './Home';
+import UserActivities from './UserActivities';
 
 //https://guarded-stream-12358.herokuapp.com/
 
@@ -19,6 +20,7 @@ function App() {
       <Route path="/myRoutines" element={<MyRoutines />} />
       <Route path="/routines/:id" element={<ViewRoutines />} />
       <Route path="/activities" element={<Activities />} />
+      <Route path="/:username/activities" element={<UserActivities />} />
     </Routes>
   );
 }
