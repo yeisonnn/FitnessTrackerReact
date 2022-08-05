@@ -4,7 +4,7 @@ import classes from './AllActivities.module.css';
 import AttachActivityToRoutine from './attachActivityRoutine';
 
 const AllActivities = (props) => {
-  const { setActId } = props;
+  const { setActId, setActivityName } = props;
   const [activityId, setActivityId] = useState('');
   const [allActivities, setAllActivities] = useState([]);
 
@@ -20,13 +20,21 @@ const AllActivities = (props) => {
 
   const activityIdHandler = async (event) => {
     event.preventDefault();
-    setActivityId(event.target.value);
+    await setActivityId(event.target.value);
     const activitiesFiltered = [...allActivities];
     const activity = activitiesFiltered.filter(
       (el) => el.name === event.target.value
     );
     const activityId = activity[0].id;
-    setActId(activityId);
+    // const activityName = activity.name
+    // if(activity.name){
+    //   setActivityName(activityName)
+    // }
+    // console.log(setActivityName())
+    if(activityId){
+      setActId(activityId);
+    }
+    
   };
 
   return (
@@ -38,6 +46,7 @@ const AllActivities = (props) => {
         value={activityId}
       >
         {allActivities.map((act) => {
+          const activityId=act.id
           return (
             <option className={classes.option} value={act.name} key={act.id}>
               {act.name}

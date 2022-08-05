@@ -2,16 +2,14 @@ import React from 'react';
 import { deleteRoutineActivity } from '../api';
 import { getCurrentData } from '../utils/auth';
 
-const DeleteRoutineActivity = () => {
+const DeleteRoutineActivity = (props) => {
+    const { routineActivityId } = props
     const token = getCurrentData("token")
 
 
 async function handleClick(event){
     event.preventDefault();
-    const routineActivityId = event.target.atrributes
-    console.log(routineActivityId)
-    const deletedAttachedActivity = await deleteRoutineActivity (token, routineActivityId)
-    console.log(deletedAttachedActivity, "This is the deleted attached activity")
+    await deleteRoutineActivity (token, routineActivityId)
     }
     
     return(
