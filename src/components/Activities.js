@@ -1,20 +1,32 @@
 import React, { useState, useEffect } from 'react';
-import { getActivities } from '../api';
+import { getActivities, getAllPublicRoutinesbyActivityId } from '../api';
 import CreateActivities from './CreateActivities';
 import Layout from './Layout';
 import classes from './Activities.module.css';
 import AllActivities from './AllActivities';
+import { async } from './../api/index';
 
 const Activities = () => {
   const [allActivities, setAllActivities] = useState([]);
   const [activityName, setActivityName] = useState('');
   const [activityId, setActivityId] = useState('');
   const [activityDescription, setActivityDescription] = useState('');
+  const [activityPublicRoutines, setActivityPublicRoutines] = useState([]);
+  const [showRoutines, setShowRoutines] = useState(false);
 
   const getAllActivities = async () => {
     const allActivitiesFetch = await getActivities();
     const transformedActivities = await allActivitiesFetch.slice(0, 99);
     return setAllActivities(transformedActivities);
+  };
+
+  const getActivitiesById = async (actId) => {
+    const data = await getAllPublicRoutinesbyActivityId(actId);
+    setActivityPublicRoutines(data);
+    if (activityPublicRoutines.length) {
+      setShowRoutines(true);
+    }
+    console.log(activityPublicRoutines, '$$$$$$$$$$$$$$$');
   };
 
   useEffect(() => {
@@ -33,6 +45,11 @@ const Activities = () => {
     const description = activity[0].description;
     setActivityId(activityId);
     setActivityDescription(description);
+    setShowRoutines(false);
+  };
+
+  const publicRoutinesHandler = () => {
+    getActivitiesById(activityId);
   };
 
   return (
@@ -79,6 +96,35 @@ const Activities = () => {
               </h3>
             </div>
           </div>
+        )}
+        {activityName && (
+          <button
+            className={classes['btn-publicRtn']}
+            onClick={publicRoutinesHandler}
+          >
+            See Public Routines
+          </button>
+        )}
+        {activityPublicRoutines.length && showRoutines ? (
+          <div className={classes['routines-body']}>
+            {activityPublicRoutines.map((routine) => {
+              return (
+                <div className={classes['routines-card']} key={routine.id}>
+                  <div className={classes['rtn-header']}>
+                    <h2>{routine.name}</h2>
+                  </div>
+                  <div className={classes['rtn-body']}>
+                    <p>Goal</p>
+                    <h3>{routine.goal}</h3>
+                    <p>Creator</p>
+                    <h3>{routine.creatorName}</h3>
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+        ) : (
+          <h3>{!showRoutines ? 'Click to see Routines' : 'Not Routines'}</h3>
         )}
       </div>
     </Layout>
