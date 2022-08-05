@@ -1,12 +1,20 @@
 import React, { useState, useEffect } from 'react';
 
+
+import {
+  getActivities,
+  getAllPublicRoutinesbyActivityId,
+  editActivityDescription,
+} from '../api';
+import CreateActivities from './CreateActivities';
+
 import { getActivities, getAllPublicRoutinesbyActivityId } from '../api';
 import CreateActivities from './createActivities';
 
+
 import Layout from './Layout';
 import classes from './Activities.module.css';
-import AllActivities from './AllActivities';
-import { async } from './../api/index';
+
 import { getCurrentData } from '../utils/auth';
 
 const Activities = () => {
@@ -14,13 +22,14 @@ const Activities = () => {
   const [activityName, setActivityName] = useState('');
   const [activityId, setActivityId] = useState('');
   const [activityDescription, setActivityDescription] = useState('');
+  const [newDescription, setNewDescription] = useState('');
   const [activityPublicRoutines, setActivityPublicRoutines] = useState([]);
   const [showRoutines, setShowRoutines] = useState(false);
-  const token = getCurrentData("token")
+
 
   const getAllActivities = async () => {
     const allActivitiesFetch = await getActivities();
-    const transformedActivities = await allActivitiesFetch.slice(0, 99);
+    const transformedActivities = await allActivitiesFetch.slice(0, 199);
     return setAllActivities(transformedActivities);
   };
 
@@ -54,6 +63,20 @@ const Activities = () => {
 
   const publicRoutinesHandler = () => {
     getActivitiesById(activityId);
+  };
+
+  const updateDescriptionHandler = async () => {
+    const data = await editActivityDescription(
+      token,
+      newDescription,
+      activityId
+    );
+    getAllActivities();
+    setNewDescription('');
+    setActivityName(data.name);
+    setActivityDescription(data.description);
+
+    console.log(allActivities);
   };
 
   return (
@@ -99,6 +122,20 @@ const Activities = () => {
                   ? activityDescription
                   : 'There is no description'}
               </h3>
+              {activityDescription && (
+                <div className={classes['description-update']}>
+                  <label>Update here</label>
+                  <input
+                    type="text"
+                    value={newDescription}
+                    onChange={(e) => setNewDescription(e.target.value)}
+                  />
+
+                  <button onClick={updateDescriptionHandler}>
+                    Update Description
+                  </button>
+                </div>
+              )}
             </div>
           </div>
         )}
