@@ -8,7 +8,9 @@ const DeleteRoutineActivity = () => {
 
 async function handleClick(event){
     event.preventDefault();
-    const deletedAttachedActivity = await deleteRoutineActivity (token)
+    const routineActivityId = event.target.atrributes
+    console.log(routineActivityId)
+    const deletedAttachedActivity = await deleteRoutineActivity (token, routineActivityId)
     console.log(deletedAttachedActivity, "This is the deleted attached activity")
     }
     

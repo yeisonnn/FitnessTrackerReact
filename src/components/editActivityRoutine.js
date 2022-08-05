@@ -9,7 +9,8 @@ const UpdateRoutineActivity = async () => {
 
     async function handleSubmit(event){
       event.preventDefault();
-      const updatedRoutineActivity = await updateRoutineActivity (count, duration, token);
+      const routineActivityId = event.target
+      const updatedRoutineActivity = await updateRoutineActivity (count, duration, token, routineActivityId);
       setCount('');
       setDuration('');
       console.log(updatedRoutineActivity, "This is the updated RoutineActivity")
@@ -18,7 +19,7 @@ const UpdateRoutineActivity = async () => {
    
    return(
     <div>
-      <form onSubmit={handleSubmit}>
+      <div >
         <label>
           <input
             type="text"
@@ -33,8 +34,8 @@ const UpdateRoutineActivity = async () => {
             onChange={(e) => setDuration(e.target.value)}
           ></input>
         </label>
-        <button type="submit">Edit Activity</button>
-      </form>
+        <button type="submit" OnSubmit = {handleSubmit} >Edit Activity</button>
+      </div>
     </div>
    )
 }
