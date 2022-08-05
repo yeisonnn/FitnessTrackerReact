@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { showPublicRoutines, deleteRoutineActivity } from '../api';
 import { getCurrentData } from '../utils/auth';
 import Layout from './Layout';
+import classes from './RoutineActivities.module.css';
 
 const RoutineActivities = () => {
   const [privateRoutine, setPrivateRoutines] = useState([]);
@@ -28,41 +29,58 @@ const RoutineActivities = () => {
 
   console.log(privateRoutine);
 
-  const routineIdHandler = async (event) => {
-    await setRoutineActivityId(event.target.dataset.rid);
+  const routineIdHandler = (event) => {
+    console.log(event.target.dataset.rid);
+    console.log(token);
+    setRoutineActivityId(event.target.dataset.rid);
     deleteRoutineActivity(token, routineActivityId);
   };
 
   return (
     <Layout>
-      {privateRoutine.map((routine, idx) => {
-        return (
-          <div key={idx}>
-            <div>
-              <h2>{routine.name}</h2>
+      <div className={classes['routines-main']}>
+        {privateRoutine.map((routine, idx) => {
+          return (
+            <div key={idx} className={classes['routines-card']}>
+              <div>
+                <h2>{routine.name}</h2>
+              </div>
+              <div>
+                {routine.activities.length ? (
+                  routine.activities.map((activity, indx) => {
+                    return (
+                      <div
+                        className={classes['routines-card']}
+                        key={routine.id}
+                      >
+                        <div className={classes['rtn-header']}>
+                          <h2>{activity.name}</h2>
+                        </div>
+                        <div className={classes['rtn-body']}>
+                          <p>Count</p>
+                          <h3>{activity.count}</h3>
+                          <p>Description</p>
+                          <h3>{activity.description}</h3>
+                          <p>ActivityRouitne</p>
+                          <h3>{activity.routineActivityId}</h3>
+                        </div>
+                        <button
+                          onClick={routineIdHandler}
+                          data-rid={activity.routineActivityId || ''}
+                        >
+                          Delete Activity
+                        </button>
+                      </div>
+                    );
+                  })
+                ) : (
+                  <p>No activities</p>
+                )}
+              </div>
             </div>
-            <div>
-              {routine.activities.map((activity, indx) => {
-                return (
-                  <div key={activity.id}>
-                    <h3>Activity:{activity.name}</h3>
-                    <h3>Description:{activity.description}</h3>
-                    <h3>Duration:{activity.duration}</h3>
-                    <h3>Count:{activity.count}</h3>
-                    <h2>routineID:{activity.routineActivityId}</h2>
-                    <button
-                      onClick={routineIdHandler}
-                      data-rid={activity.routineActivityId || ''}
-                    >
-                      Delete Activity
-                    </button>
-                  </div>
-                );
-              })}
-            </div>
-          </div>
-        );
-      })}
+          );
+        })}
+      </div>
     </Layout>
   );
 };
@@ -112,6 +130,34 @@ export default RoutineActivities;
     </Layout>
   );
 
+
+  <div className={classes['routines-card']} key={routine.id}>
+                  <div className={classes['rtn-header']}>
+                    <h2>{routine.name}</h2>
+                  </div>
+                  <div className={classes['rtn-body']}>
+                    <p>Goal</p>
+                    <h3>{routine.goal}</h3>
+                    <p>Creator</p>
+                    <h3>{routine.creatorName}</h3>
+                  </div>
+                  <Link to="/routines" className={classes.link}>
+                    Go back To routines
+                  </Link>
+                </div>
   
+ <div key={activity.id}>
+                      <h3>Activity:{activity.name}</h3>
+                      <h3>Description:{activity.description}</h3>
+                      <h3>Duration:{activity.duration}</h3>
+                      <h3>Count:{activity.count}</h3>
+                      <h2>routineID:{activity.routineActivityId}</h2>
+                      <button
+                        onClick={routineIdHandler}
+                        data-rid={activity.routineActivityId || ''}
+                      >
+                        Delete Activity
+                      </button>
+                    </div>
 
 */

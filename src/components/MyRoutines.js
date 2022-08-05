@@ -9,7 +9,7 @@ import classes from './MyRoutines.module.css';
 import AllActivities from './AllActivities';
 import { getActivities } from '../api';
 import { attachActivityToRoutine } from '../api';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 import { RoutineActivities } from './RoutineActivities';
 
 const MyRoutines = () => {
@@ -58,11 +58,6 @@ const MyRoutines = () => {
 
   console.log(privateRoutine);
 
-  async function handleClick(event) {
-    event.preventDefault();
-    navigate('/routineActivities');
-  }
-
   return (
     <Layout>
       <button
@@ -106,9 +101,7 @@ const MyRoutines = () => {
                   <h3>{routine.creatorName}</h3>
                 </div>
                 <div>
-                  <button onClick={handleClick}>
-                    View routine's activities
-                  </button>
+                  <Link to="/routineActivities">View Routine's Activities</Link>
                 </div>
                 <AllActivities setActId={setActId} />
                 <div>
