@@ -35,7 +35,7 @@
   border: 2px solid #cc4949;
 }
 
-[type='submit'] {
+.login-btn {
   font-family: inherit;
   width: 100%;
   background: #cc6666;
@@ -50,7 +50,7 @@
   margin-top: -4px;
   font-weight: 700;
 }
-[type='submit']:hover {
+.login-btn:hover {
   background: #e03131;
 }
 

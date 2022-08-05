@@ -9,16 +9,21 @@ const CreateRoutine = (props) => {
   const [goal, setGoal] = useState('');
   const [isPublic, setIsPublic] = useState(true);
   const { setShowCreateRoutine, setLoadingPage, getAllPublicRoutines } = props;
+  const [error, setError] = useState(false);
 
   async function handleSubmit(event) {
     event.preventDefault();
-    const activities = await createRoutine(name, goal, isPublic, token);
-    setName('');
-    setGoal('');
-    console.log(activities, 'This is submitted activities');
-    setShowCreateRoutine(false);
-    setLoadingPage(true);
-    getAllPublicRoutines();
+    if (name && goal) {
+      const activities = await createRoutine(name, goal, isPublic, token);
+      setName('');
+      setGoal('');
+
+      setShowCreateRoutine(false);
+      setLoadingPage(true);
+      getAllPublicRoutines();
+    } else {
+      setError(true);
+    }
   }
   return (
     <div className={classes['login-body']}>
@@ -32,17 +37,28 @@ const CreateRoutine = (props) => {
           type="text"
           placeholder="Name Of Routine"
           value={name}
-          onChange={(e) => setName(e.target.value)}
+          onChange={(e) => {
+            setName(e.target.value);
+            setError(false);
+          }}
         />
         <input
           type="text"
           placeholder="Goal"
           value={goal}
-          onChange={(e) => setGoal(e.target.value)}
+          onChange={(e) => {
+            setGoal(e.target.value);
+            setError(false);
+          }}
         />
 
-        <input type="submit" value="create" />
+        <input
+          className={classes['createRoutine-btn']}
+          type="submit"
+          value="create"
+        />
       </form>
+      {error && <p className={classes.error}>Please fill Name and Goal</p>}
     </div>
   );
 };

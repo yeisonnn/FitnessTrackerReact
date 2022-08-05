@@ -19,7 +19,6 @@ const EditRoutine = (props) => {
       routineId,
       token
     );
-    console.log(activities, '********* aqui en edit routines');
     setName('');
     setGoal('');
     getAllPublicRoutines();
@@ -45,7 +44,11 @@ const EditRoutine = (props) => {
           onChange={(e) => setGoal(e.target.value)}
         />
 
-        <input type="submit" value="Update" />
+        <input
+          className={classes['edit-submit']}
+          type="submit"
+          value="Update"
+        />
       </form>
     </div>
   );

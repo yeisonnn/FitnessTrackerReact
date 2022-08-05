@@ -7,7 +7,7 @@ import {
 
 import Layout from './Layout';
 import classes from './Activities.module.css';
-
+import { GiClick } from 'react-icons/gi';
 import { getCurrentData } from '../utils/auth';
 import CreateActivities from './createActivities';
 
@@ -33,7 +33,6 @@ const Activities = () => {
     if (activityPublicRoutines.length) {
       setShowRoutines(true);
     }
-    console.log(activityPublicRoutines, '$$$$$$$$$$$$$$$');
   };
 
   useEffect(() => {
@@ -117,7 +116,7 @@ const Activities = () => {
               </h3>
               {activityDescription && (
                 <div className={classes['description-update']}>
-                  <label>Update here</label>
+                  <label>Update Description here</label>
                   <input
                     type="text"
                     value={newDescription}
@@ -159,10 +158,18 @@ const Activities = () => {
             })}
           </div>
         ) : (
-          <h3>{!showRoutines ? 'Click to see Routines' : 'Not Routines'}</h3>
+          <h3>
+            {!showRoutines
+              ? 'Click to see Routines for this activity'
+              : 'Not Routines'}
+          </h3>
         )}
       </div>
-      <div>{token ? <CreateActivities /> : null}</div>
+      <div>
+        {token ? (
+          <CreateActivities getAllActivities={getAllActivities} />
+        ) : null}
+      </div>
     </Layout>
   );
 };

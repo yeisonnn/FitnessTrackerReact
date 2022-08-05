@@ -1,5 +1,5 @@
-const BASE = 'https://guarded-stream-12358.herokuapp.com/';
-// const BASE = 'https://fitnesstrac-kr.herokuapp.com/';
+// const BASE = 'https://guarded-stream-12358.herokuapp.com/';
+const BASE = 'https://fitnesstrac-kr.herokuapp.com/';
 
 export async function registerUser(username, password) {
   try {
@@ -42,6 +42,7 @@ export async function loginUser(username, password) {
       throw new Error('Something went Wrong');
     }
     const data = await response.json();
+
     return data;
   } catch (error) {
     console.error(error.messsage);

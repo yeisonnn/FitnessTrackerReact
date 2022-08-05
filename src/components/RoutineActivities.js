@@ -43,7 +43,10 @@ const RoutineActivities = () => {
       <div className={classes['routines-main']}>
         {privateRoutine.map((routine, idx) => {
           return (
-            <div key={idx} className={classes['routines-card']}>
+            <div
+              key={`${routine.name}${idx}`}
+              className={classes['routines-card']}
+            >
               <div>
                 <h2>{routine.name}</h2>
               </div>
@@ -53,7 +56,7 @@ const RoutineActivities = () => {
                     return (
                       <div
                         className={classes['routines-card']}
-                        key={routine.id}
+                        key={`${activity.count}${activity.duration}${indx}`}
                       >
                         <div className={classes['rtn-header']}>
                           <h2>{activity.name}</h2>
@@ -66,11 +69,15 @@ const RoutineActivities = () => {
                           <p>Duration</p>
                           <h3>{activity.duration}</h3>
                         </div>
-                        <DeleteRoutineActivity routineActivityId = {activity.routineActivityId}/>
+                        <DeleteRoutineActivity
+                          getAllPublicRoutines={getAllPublicRoutines}
+                          routineActivityId={activity.routineActivityId}
+                        />
                         <div>
-                        <UpdateRoutineActivity routineActivityId = {activity.routineActivityId}/>
+                          <UpdateRoutineActivity
+                            routineActivityId={activity.routineActivityId}
+                          />
                         </div>
-                        
                       </div>
                     );
                   })

@@ -68,18 +68,16 @@
 
 .activity-card {
   padding: 2rem;
-
-  box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset,
-    rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
 }
 
 .activity-card h2 {
-  font-size: 3rem;
+  font-size: 1.8rem;
   color: #e03131;
 }
 
 .activity-card h3 {
-  font-size: 2rem;
+  font-size: 2.8rem;
 }
 
 .activity-card h3:first-of-type {
@@ -144,7 +142,9 @@
 }
 
 .btn-publicRtn:hover {
-  background-color: #dee2e6;
+  background-color: #e67700;
+  color: #fff;
+  border: 1px solid transparent;
 }
 
 .description-update {
@@ -179,5 +179,7 @@
 }
 
 .description-update button:hover {
-  background-color: rgb(240, 240, 240);
+  background-color: #e67700;
+  color: #fff;
+  border: 1px solid transparent;
 }

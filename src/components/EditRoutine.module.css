@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Metamorphous&display=swap');
 
 .login-body {
-  background: rgb(30, 30, 40);
+  background-image: linear-gradient(to right, #434343 0%, black 100%);
   width: 55%;
   font-family: 'Metamorphous', cursive;
   padding: 0.7rem;
@@ -51,7 +51,7 @@
   border: 2px solid #cc4949;
 }
 
-[type='submit'] {
+.edit-submit {
   font-family: inherit;
   width: 100%;
   background: #cc6666;
@@ -66,6 +66,6 @@
   margin-top: -4px;
   font-weight: 700;
 }
-[type='submit']:hover {
+.edit-submit:hover {
   background: #e03131;
 }

@@ -26,7 +26,7 @@ const AllActivities = (props) => {
       (el) => el.name === event.target.value
     );
     const activityId = activity[0].id;
-    console.log('here in all aCTIVITIES', activity);
+
     if (activityId) {
       setActId(activityId);
     }
@@ -54,22 +54,3 @@ const AllActivities = (props) => {
 };
 
 export default AllActivities;
-
-/*
- <div className={classes['allActivities-form']}>
-      <select 
-      id="activities"
-      name="activities"
-      onChange={activityIdHandler}
-      value={activityId}>
-        {allActivities.map((act) => {
-          return (
-            <option className={classes.option} value={act.name} key={act.id}>
-              {act.name}
-            </option>
-          );
-        })}
-      </select>
-      <AttachActivityToRoutine routineId={routineId} activityId={activityId} />
-    </div>
-*/
