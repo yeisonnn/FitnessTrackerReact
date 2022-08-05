@@ -50,7 +50,8 @@ const Routines = () => {
                   <p>Creator</p>
                   <h3>
                     <Link
-                      to={`/${routine.creatorName}/activities`}
+                      to={`/${routine.creatorName}/routines
+                  `}
                       className={classes['link-user']}
                     >
                       {routine.creatorName} <GiClick />

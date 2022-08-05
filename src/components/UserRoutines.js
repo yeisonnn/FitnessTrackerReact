@@ -2,36 +2,37 @@ import React, { useState, useEffect } from 'react';
 import { showPublicRoutines } from '../api';
 import { useParams, Link } from 'react-router-dom';
 import Layout from './Layout';
-import classes from './UserActivities.module.css';
+import classes from './UserRoutines.module.css';
 
-const UserActivities = () => {
+const UserRoutines = () => {
   const { username } = useParams();
-  const [userActivities, setUserActivities] = useState([]);
+  const [userRoutines, setUserRoutines] = useState([]);
 
   const getActivitiesUser = async () => {
     const AllRoutines = await showPublicRoutines();
     const filterActivities = await AllRoutines.filter(
       (act) => act.creatorName === username
     );
-    setUserActivities(filterActivities);
+    setUserRoutines(filterActivities);
+    console.log(AllRoutines);
   };
 
   useEffect(() => {
     getActivitiesUser();
   }, []);
 
-  console.log('userActivities', userActivities);
+  console.log('userActivities', userRoutines);
   return (
     <Layout>
       <div className={classes['routines-main']}>
         <div className={classes['routines-header']}>
           <h2>
-            <span>{username}'s</span> Activities
+            <span>{username}'s</span> Routines
           </h2>
         </div>
-        {userActivities.length ? (
+        {userRoutines.length ? (
           <div className={classes['routines-body']}>
-            {userActivities.map((routine) => {
+            {userRoutines.map((routine) => {
               return (
                 <div className={classes['routines-card']} key={routine.id}>
                   <div className={classes['rtn-header']}>
@@ -58,4 +59,4 @@ const UserActivities = () => {
   );
 };
 
-export default UserActivities;
+export default UserRoutines;
