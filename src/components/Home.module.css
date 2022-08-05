@@ -351,14 +351,12 @@
     justify-content: center;
     align-items: flex-start;
     min-height: 70%;
-    border: 2px solid green;
   }
 
   .home-container {
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
-    border: 2px solid pink;
   }
 
   .info {
@@ -371,11 +369,19 @@
   }
 }
 
-@media screen and (max-width: 750px) {
+@media screen and (max-width: 850px) {
   html {
     font-size: 40%;
   }
   .mainHome {
     height: 100%;
+  }
+
+  .welcome h1 {
+    font-size: 3rem;
+  }
+
+  .welcome span {
+    font-size: 5rem;
   }
 }

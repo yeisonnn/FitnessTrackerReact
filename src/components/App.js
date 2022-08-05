@@ -9,6 +9,7 @@ import Activities from './Activities';
 import RoutineActivities from './RoutineActivities';
 import Home from './Home';
 import UserRoutines from './UserRoutines';
+import Modal from './Modal';
 
 //https://guarded-stream-12358.herokuapp.com/
 
@@ -20,9 +21,15 @@ function App() {
       <Route path="/routines" element={<Routines />} />
       <Route path="/myRoutines" element={<MyRoutines />} />
       <Route path="/routines/:id" element={<ViewRoutines />} />
-      <Route path="/routineActivities" element = {<RoutineActivities/>}/>
+      <Route path="/routineActivities" element={<RoutineActivities />} />
       <Route path="/activities" element={<Activities />} />
       <Route path="/:username/routines" element={<UserRoutines />} />
+      <Route
+        path="*"
+        element={
+          <Modal title="Page Not Found" body={'Error 404'} show={true} />
+        }
+      />
     </Routes>
   );
 }

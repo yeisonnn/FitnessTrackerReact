@@ -333,10 +333,12 @@ export async function updateRoutineActivity(
   }
 }
 
+// ${BASE}api/routine_activities/${routineActivityId}
+
 export async function deleteRoutineActivity(token, routineActivityId) {
   try {
     const response = await fetch(
-      `${BASE}api/routine_activities/${routineActivityId}`,
+      `http://fitnesstrac-kr.herokuapp.com/api/routine_activities/${routineActivityId}`,
       {
         method: 'DELETE',
         headers: {
