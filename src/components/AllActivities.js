@@ -26,15 +26,10 @@ const AllActivities = (props) => {
       (el) => el.name === event.target.value
     );
     const activityId = activity[0].id;
-    // const activityName = activity.name
-    // if(activity.name){
-    //   setActivityName(activityName)
-    // }
-    // console.log(setActivityName())
-    if(activityId){
+    console.log('here in all aCTIVITIES', activity);
+    if (activityId) {
       setActId(activityId);
     }
-    
   };
 
   return (
@@ -46,7 +41,7 @@ const AllActivities = (props) => {
         value={activityId}
       >
         {allActivities.map((act) => {
-          const activityId=act.id
+          const activityId = act.id;
           return (
             <option className={classes.option} value={act.name} key={act.id}>
               {act.name}
