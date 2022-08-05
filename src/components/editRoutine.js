@@ -4,7 +4,7 @@ import { getCurrentData } from '../utils/auth';
 import classes from './EditRoutine.module.css';
 
 const EditRoutine = (props) => {
-  const { setShowUpdateRoutine, routineId } = props;
+  const { setShowUpdateRoutine, routineId, getAllPublicRoutines } = props;
   const token = getCurrentData('token');
   const [name, setName] = useState('');
   const [goal, setGoal] = useState('');
@@ -22,6 +22,7 @@ const EditRoutine = (props) => {
     console.log(activities, '********* aqui en edit routines');
     setName('');
     setGoal('');
+    getAllPublicRoutines();
   }
   return (
     <div className={classes['login-body']}>

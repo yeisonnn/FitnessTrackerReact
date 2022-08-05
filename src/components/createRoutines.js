@@ -8,7 +8,7 @@ const CreateRoutine = (props) => {
   const [name, setName] = useState('');
   const [goal, setGoal] = useState('');
   const [isPublic, setIsPublic] = useState(true);
-  const { setShowCreateRoutine, setLoadingPage } = props;
+  const { setShowCreateRoutine, setLoadingPage, getAllPublicRoutines } = props;
 
   async function handleSubmit(event) {
     event.preventDefault();
@@ -18,6 +18,7 @@ const CreateRoutine = (props) => {
     console.log(activities, 'This is submitted activities');
     setShowCreateRoutine(false);
     setLoadingPage(true);
+    getAllPublicRoutines();
   }
   return (
     <div className={classes['login-body']}>

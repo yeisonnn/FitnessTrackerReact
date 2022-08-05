@@ -130,7 +130,6 @@ export async function getActivities() {
   }
 }
 
-
 export async function createActivity(name, description, token) {
   try {
     const response = await fetch(`${BASE}api/activities`, {
@@ -290,19 +289,24 @@ export async function attachActivityToRoutine(
         }),
       }
     );
-      console.log(response)
+    console.log(response);
     if (!response.ok) {
       throw new Error('Something went Wrong');
     }
     const data = await response.json();
-    console.log(data)
+    console.log(data);
     return data;
   } catch (error) {
     console.error(error.message);
   }
 }
 
-export async function updateRoutineActivity(count, duration, token, routineActivityId) {
+export async function updateRoutineActivity(
+  count,
+  duration,
+  token,
+  routineActivityId
+) {
   try {
     const response = await fetch(
       `${BASE}api/routine_activities/routineActivityId`,
@@ -344,6 +348,8 @@ export async function deleteRoutineActivity(token, routineActivityId) {
     if (!response.ok) {
       throw new Error('Something went Wrong');
     }
+    const data = await response.json();
+    console.log(data, 'here in deleteRoutineActivity');
   } catch (error) {
     console.error(error.message);
   }
