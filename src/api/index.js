@@ -1,5 +1,5 @@
-// const BASE = 'https://guarded-stream-12358.herokuapp.com/';
-const BASE = 'https://fitnesstrac-kr.herokuapp.com/';
+const BASE = 'https://guarded-stream-12358.herokuapp.com/';
+// const BASE = 'https://fitnesstrac-kr.herokuapp.com/';
 
 export async function registerUser(username, password) {
   try {

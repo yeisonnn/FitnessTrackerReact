@@ -9,6 +9,7 @@ import Layout from './Layout';
 import classes from './Activities.module.css';
 
 import { getCurrentData } from '../utils/auth';
+import CreateActivities from './createActivities';
 
 const Activities = () => {
   const [allActivities, setAllActivities] = useState([]);
@@ -18,7 +19,7 @@ const Activities = () => {
   const [newDescription, setNewDescription] = useState('');
   const [activityPublicRoutines, setActivityPublicRoutines] = useState([]);
   const [showRoutines, setShowRoutines] = useState(false);
-
+  const token = getCurrentData('token');
 
   const getAllActivities = async () => {
     const allActivitiesFetch = await getActivities();
@@ -76,7 +77,6 @@ const Activities = () => {
     <Layout>
       <div className={classes['activities-main']}>
         <div className={classes['activities-header']}>
-          
           <h2>
             All <span>Activities</span>
           </h2>
@@ -162,11 +162,7 @@ const Activities = () => {
           <h3>{!showRoutines ? 'Click to see Routines' : 'Not Routines'}</h3>
         )}
       </div>
-      <div>
-        {token ? (
-          <CreateActivities/>
-        ) :null}
-      </div>
+      <div>{token ? <CreateActivities /> : null}</div>
     </Layout>
   );
 };
