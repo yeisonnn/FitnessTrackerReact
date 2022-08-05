@@ -7,27 +7,29 @@ import { useNavigate } from 'react-router-dom';
 const Register = () => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
-  const [errorMessage, setErrorMessage] = useState ('')
-  const [passwordError, setPasswordError] = useState ('')
+  const [errorMessage, setErrorMessage] = useState('');
+  const [passwordError, setPasswordError] = useState('');
+  const [error, setError] = useState(false);
   const navigate = useNavigate();
 
   const registerUserHandler = async (event) => {
     event.preventDefault();
-    if (password.length < 8){
-      setErrorMessage('')
-      setPasswordError("Password must be 8 characters or longer")
-      return
+    if (password.length < 8) {
+      setErrorMessage('');
+      setPasswordError('Password must be 8 characters or longer');
+      setError(true);
+      return;
     }
     const registrationInfo = await registerUser(username, password);
-    if (!registrationInfo){
-      setPasswordError('')
-      setErrorMessage("That username has been taken")
-      return 
+    if (!registrationInfo) {
+      setPasswordError('');
+      setErrorMessage('That username has been taken');
+      setError(true);
+      return;
     }
 
     //resetting value for inputs
-    
-    
+
     setUsername('');
     setPassword('');
     navigate('/');
@@ -59,17 +61,16 @@ const Register = () => {
                 placeholder="Password"
                 id="password"
                 value={password}
-                onChange={(e) => setPassword(e.target.value)}
+                onChange={(e) => {
+                  setPassword(e.target.value);
+                  setError(false);
+                }}
               />
+              {errorMessage && error ? <h4>{errorMessage}</h4> : null}
+              {passwordError && error ? <h4>{passwordError}</h4> : null}
               <div className={classes['register-btn']}>
                 <button type="submit">Submit</button>
               </div>
-              {errorMessage ? (
-                <h1>{errorMessage}</h1>
-              ):null}
-              {passwordError ? (
-                <h1>{passwordError}</h1>
-              ):null}
             </form>
           </div>
         </div>

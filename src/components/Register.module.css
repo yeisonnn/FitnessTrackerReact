@@ -148,3 +148,9 @@
   background-color: hsl(217, 81%, 22%);
   transform: scale(0.98);
 }
+
+.register-form h4 {
+  text-align: center;
+  color: #fff;
+  letter-spacing: 2px;
+}

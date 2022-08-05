@@ -7,8 +7,9 @@ import {
 
 import Layout from './Layout';
 import classes from './Activities.module.css';
-
+import { GiClick } from 'react-icons/gi';
 import { getCurrentData } from '../utils/auth';
+import CreateActivities from './createActivities';
 
 const Activities = () => {
   const [allActivities, setAllActivities] = useState([]);
@@ -18,7 +19,7 @@ const Activities = () => {
   const [newDescription, setNewDescription] = useState('');
   const [activityPublicRoutines, setActivityPublicRoutines] = useState([]);
   const [showRoutines, setShowRoutines] = useState(false);
-
+  const token = getCurrentData('token');
 
   const getAllActivities = async () => {
     const allActivitiesFetch = await getActivities();
@@ -32,7 +33,6 @@ const Activities = () => {
     if (activityPublicRoutines.length) {
       setShowRoutines(true);
     }
-    console.log(activityPublicRoutines, '$$$$$$$$$$$$$$$');
   };
 
   useEffect(() => {
@@ -76,7 +76,6 @@ const Activities = () => {
     <Layout>
       <div className={classes['activities-main']}>
         <div className={classes['activities-header']}>
-          
           <h2>
             All <span>Activities</span>
           </h2>
@@ -117,7 +116,7 @@ const Activities = () => {
               </h3>
               {activityDescription && (
                 <div className={classes['description-update']}>
-                  <label>Update here</label>
+                  <label>Update Description here</label>
                   <input
                     type="text"
                     value={newDescription}
@@ -159,13 +158,17 @@ const Activities = () => {
             })}
           </div>
         ) : (
-          <h3>{!showRoutines ? 'Click to see Routines' : 'Not Routines'}</h3>
+          <h3>
+            {!showRoutines
+              ? 'Click to see Routines for this activity'
+              : 'Not Routines'}
+          </h3>
         )}
       </div>
       <div>
         {token ? (
-          <CreateActivities/>
-        ) :null}
+          <CreateActivities getAllActivities={getAllActivities} />
+        ) : null}
       </div>
     </Layout>
   );

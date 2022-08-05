@@ -36,11 +36,11 @@ const UserRoutines = () => {
               return (
                 <div className={classes['routines-card']} key={routine.id}>
                   <div className={classes['rtn-header']}>
-                    <h2>{routine.name}</h2>
+                    <h2>{routine.name || 'No name'}</h2>
                   </div>
                   <div className={classes['rtn-body']}>
                     <p>Goal</p>
-                    <h3>{routine.goal}</h3>
+                    <h3>{routine.goal || 'no goal'}</h3>
                     <p>Creator</p>
                     <h3>{routine.creatorName}</h3>
                   </div>

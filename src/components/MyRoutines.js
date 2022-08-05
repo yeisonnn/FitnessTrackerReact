@@ -11,6 +11,7 @@ import { getActivities } from '../api';
 import { attachActivityToRoutine } from '../api';
 import { useNavigate, Link } from 'react-router-dom';
 import { RoutineActivities } from './RoutineActivities';
+import { GiClick } from 'react-icons/gi';
 
 const MyRoutines = () => {
   const [privateRoutine, setPrivateRoutines] = useState([]);
@@ -54,19 +55,13 @@ const MyRoutines = () => {
 
   const attachActivityToRoutineHandler = (e) => {
     setRoutineId(e.target.dataset.rtnid);
-    console.log(routineId);
-    console.log(actId);
-    console.log(privateRoutine);
+    // console.log(routineId);
+    // console.log(actId);
+    // console.log(privateRoutine);
 
     const allCards = [...privateRoutine];
     const myRoutine = allCards.filter((rtn) => rtn.id === routineId);
     console.log(myRoutine);
-
-    // if (duration && count && routineId) {
-    //   attachActivityToRoutine(token, actId, count, duration, routineId);
-    // } else {
-    //   console.log('Something went wrong');
-    // }
   };
 
   return (
@@ -104,21 +99,25 @@ const MyRoutines = () => {
             return (
               <div className={classes['routines-card']} key={routine.id}>
                 <div className={classes['rtn-header']}>
-                  <h2>{routine.name}</h2>
+                  <h2>{routine.name || 'No name'}</h2>
                 </div>
                 <div className={classes['rtn-body']}>
                   <p>Goal</p>
-                  <h3>{routine.goal}</h3>
+                  <h3>{routine.goal || 'no goal was set'}</h3>
                   <p>Creator</p>
                   <h3>{routine.creatorName}</h3>
                 </div>
                 <div>
-                  <Link to="/routineActivities">View Routine's Activities</Link>
+                  <Link className={classes.myLink} to="/routineActivities">
+                    View Routine's Activities <GiClick />
+                  </Link>
                 </div>
+                <p className={classes['allActivities']}>All Activities</p>
                 <AllActivities
                   setActId={setActId}
                   activityName={setActivityName}
                 />
+
                 {actId ? (
                   <div className={classes['attach-routines']}>
                     <label>Count</label>
@@ -134,6 +133,7 @@ const MyRoutines = () => {
                     <button
                       data-rtnid={routine.id}
                       onClick={attachActivityToRoutineHandler}
+                      className={classes['attach-button']}
                     >
                       Attach routine
                     </button>
@@ -153,30 +153,10 @@ const MyRoutines = () => {
           })}
         </div>
       ) : (
-        <p>You have no routines</p>
+        <p className={classes['no-routines']}>You have no routines</p>
       )}
     </Layout>
   );
 };
 
 export default MyRoutines;
-
-/*
-  const getAllPublicRoutines = async () => {
-    const publicRoutines = await showPublicRoutines();
-
-    const myRoutines = publicRoutines.filter(
-      (routine) => routine.creatorName === username
-    );
-    console.log(myRoutines);
-    return myRoutines;
-  };
-
-  useEffect(() => {
-    const fetchData = async () => {
-      const data = await getAllPublicRoutines();
-      setPrivateRoutines(data);
-    };
-    fetchData();
-  }, []);
-*/

@@ -10,12 +10,14 @@
 }
 
 .allActivities-form select {
-  border: 2px solid #000;
   width: 100%;
+  padding: 0.5rem;
+  font-family: 'Metamorphous', cursive;
+  border-radius: 10px;
 }
 
 .option {
   font-family: 'Metamorphous', cursive;
   padding: 1rem;
-  font-size: 1rem;
+  font-size: 1.4rem;
 }

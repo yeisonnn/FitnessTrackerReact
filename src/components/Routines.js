@@ -14,8 +14,7 @@ const Routines = () => {
     const isPublic = await routinesSorted.filter(
       (ele) => ele.isPublic === true
     );
-    console.log(publicRoutines);
-    console.log(isPublic);
+
     return isPublic;
   };
 
@@ -26,8 +25,6 @@ const Routines = () => {
     };
     fetchData();
   }, []);
-
-  console.log(publicRoutines);
 
   return (
     <Layout>

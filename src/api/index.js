@@ -42,6 +42,7 @@ export async function loginUser(username, password) {
       throw new Error('Something went Wrong');
     }
     const data = await response.json();
+
     return data;
   } catch (error) {
     console.error(error.messsage);
