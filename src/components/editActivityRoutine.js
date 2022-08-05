@@ -2,40 +2,37 @@ import React, { useState } from 'react';
 import { updateRoutineActivity } from '../api';
 import { getCurrentData } from '../utils/auth';
 
-const UpdateRoutineActivity = async () => {
+const UpdateRoutineActivity = (props) => {
+    const { routineActivityId } = props
     const [count, setCount] = useState('')
     const [duration, setDuration] = useState('')
     const token = getCurrentData("token")
 
-    async function handleSubmit(event){
+    async function OnClick(event){
       event.preventDefault();
-      const routineActivityId = event.target
       const updatedRoutineActivity = await updateRoutineActivity (count, duration, token, routineActivityId);
       setCount('');
       setDuration('');
       console.log(updatedRoutineActivity, "This is the updated RoutineActivity")
     }
-
-   
    return(
     <div>
-      <div >
-        <label>
-          <input
-            type="text"
-            value={count}
-            onChange={(e) => setCount(e.target.value)}
-          ></input>
-        </label>
-        <label>
-          <input
-            type="text"
-            value={duration}
-            onChange={(e) => setDuration(e.target.value)}
-          ></input>
-        </label>
-        <button type="submit" OnSubmit = {handleSubmit} >Edit Activity</button>
-      </div>
+      <label>Count</label>
+      <input type="text"
+          placeholder="New Count"
+          value={count}
+          onChange={(e) => 
+          setCount(e.target.value)}>
+          </input>
+      <label>Duration</label>
+      <input type="text"
+          placeholder="New Duration"
+          value={duration}
+          onChange={(e) => 
+          setDuration(e.target.value)}>
+          </input>
+        <button type="submit" onClick = {OnClick} >Edit Activity
+        </button>
     </div>
    )
 }
