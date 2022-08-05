@@ -309,7 +309,7 @@ export async function updateRoutineActivity(
 ) {
   try {
     const response = await fetch(
-      `${BASE}api/routine_activities/routineActivityId`,
+      `${BASE}api/routine_activities/${routineActivityId}`,
       {
         method: 'PATCH',
         headers: {

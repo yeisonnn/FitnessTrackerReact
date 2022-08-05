@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { showPublicRoutines, deleteRoutineActivity } from '../api';
 import { getCurrentData } from '../utils/auth';
+import DeleteRoutineActivity from './deleteActivityRoutine';
+import UpdateRoutineActivity from './editActivityRoutine';
 import Layout from './Layout';
 import classes from './RoutineActivities.module.css';
 
@@ -57,19 +59,18 @@ const RoutineActivities = () => {
                           <h2>{activity.name}</h2>
                         </div>
                         <div className={classes['rtn-body']}>
-                          <p>Count</p>
-                          <h3>{activity.count}</h3>
                           <p>Description</p>
                           <h3>{activity.description}</h3>
-                          <p>ActivityRouitne</p>
-                          <h3>{activity.routineActivityId}</h3>
+                          <p>Count</p>
+                          <h3>{activity.count}</h3>
+                          <p>Duration</p>
+                          <h3>{activity.duration}</h3>
                         </div>
-                        <button
-                          onClick={routineIdHandler}
-                          data-rid={activity.routineActivityId || ''}
-                        >
-                          Delete Activity
-                        </button>
+                        <DeleteRoutineActivity routineActivityId = {activity.routineActivityId}/>
+                        <div>
+                        <UpdateRoutineActivity routineActivityId = {activity.routineActivityId}/>
+                        </div>
+                        
                       </div>
                     );
                   })
