@@ -40,7 +40,10 @@ const Routines = () => {
         <div className={classes['routines-body']}>
           {publicRoutines.map((routine) => {
             return (
-              <div className={classes['routines-card']} key={routine.id}>
+              <div
+                className={classes['routines-card']}
+                key={`${routine.id}${routine.name}`}
+              >
                 <div className={classes['rtn-header']}>
                   <h2>{routine.name}</h2>
                 </div>
@@ -59,9 +62,9 @@ const Routines = () => {
                   </h3>
                   <p>Activities</p>
                   <div className={classes['activitycontainer']}>
-                    {routine.activities.map((activity, indx) => {
+                    {routine.activities.map((activity, index) => {
                       return (
-                        <div key="activityIdKey">
+                        <div key={`${index}${activity.name}`}>
                           <h3>Activity:{activity.name}</h3>
                           <h3>Description:{activity.description}</h3>
                           <h3>Duration:{activity.duration}</h3>
