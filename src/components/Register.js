@@ -7,13 +7,27 @@ import { useNavigate } from 'react-router-dom';
 const Register = () => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
+  const [errorMessage, setErrorMessage] = useState ('')
+  const [passwordError, setPasswordError] = useState ('')
   const navigate = useNavigate();
 
   const registerUserHandler = async (event) => {
     event.preventDefault();
+    if (password.length < 8){
+      setErrorMessage('')
+      setPasswordError("Password must be 8 characters or longer")
+      return
+    }
     const registrationInfo = await registerUser(username, password);
+    if (!registrationInfo){
+      setPasswordError('')
+      setErrorMessage("That username has been taken")
+      return 
+    }
 
     //resetting value for inputs
+    
+    
     setUsername('');
     setPassword('');
     navigate('/');
@@ -50,6 +64,12 @@ const Register = () => {
               <div className={classes['register-btn']}>
                 <button type="submit">Submit</button>
               </div>
+              {errorMessage ? (
+                <h1>{errorMessage}</h1>
+              ):null}
+              {passwordError ? (
+                <h1>{passwordError}</h1>
+              ):null}
             </form>
           </div>
         </div>
