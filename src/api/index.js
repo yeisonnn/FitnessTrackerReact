@@ -244,9 +244,6 @@ export async function editRoutine(name, goal, isPublic, routineId, token) {
   }
 }
 
-//http://fitnesstrac-kr.herokuapp.com/api/routines/6
-//`${BASE}api/routines/:${routineId}`
-
 export async function deleteRoutine(token, routineId) {
   try {
     const response = await fetch(

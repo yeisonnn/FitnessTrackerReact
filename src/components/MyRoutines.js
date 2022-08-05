@@ -10,6 +10,7 @@ import AllActivities from './AllActivities';
 import { getActivities } from '../api';
 import { attachActivityToRoutine } from '../api';
 import { useNavigate } from 'react-router-dom';
+import { RoutineActivities } from './RoutineActivities'
 
 // import UpdateRoutineActivity from './editActivityRoutine';
 // import DeleteRoutineActivity from './deleteActivityRoutine';
@@ -67,6 +68,11 @@ const MyRoutines = () => {
 
   console.log(privateRoutine);
 
+  async function handleClick(event){
+    event.preventDefault();
+    navigate('/routineActivities');
+}
+
   return (
     <Layout>
       <button
@@ -106,7 +112,11 @@ const MyRoutines = () => {
                   <h3>{routine.goal}</h3>
                   <p>Creator</p>
                   <h3>{routine.creatorName}</h3>
-                  <p>Activities</p>
+                </div>
+                <div>
+                <button onClick={handleClick}>
+                View routine's activities
+            </button>
                 </div>
                 <AllActivities setActId={setActId} />
                 <div>
@@ -141,7 +151,7 @@ const MyRoutines = () => {
           })}
         </div>
       ) : (
-        <p>There no private routines</p>
+        <p>You have no routines</p>
       )}
     </Layout>
   );
