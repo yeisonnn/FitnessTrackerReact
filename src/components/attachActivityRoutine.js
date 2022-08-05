@@ -10,30 +10,32 @@ const AttachActivityToRoutine = (props) => {
   console.log(duration);
 
   const token = getCurrentData('token');
-  console.log(
+  
+
+  async function handleSubmit(event) {
+    event.preventDefault();
+    console.log(
     token,
     'This is token',
     activityId,
     'This activityId',
     count,
+    'This is count',
     duration,
+    'This is duration',
     routineId,
     'This is routineId'
   );
-
-  async function handleSubmit(event) {
-    event.preventDefault();
-
-    const attachedActivity = await attachActivityToRoutine(
-      token,
-      activityId,
-      count,
-      duration,
-      routineId
-    );
-
-    console.log(attachedActivity, 'activity was attached successfully');
-  }
+    
+  //  const attachedActivity = await attachActivityToRoutine(
+  //      token,
+  //      activityId,
+  //     count,
+  //      duration,
+  //    routineId
+  //   );
+    
+    }
 
   return (
     <div>
