@@ -24,7 +24,7 @@ const MyRoutines = () => {
   const username = getCurrentData('username');
   const token = getCurrentData('token');
   const navigate = useNavigate();
-  const [activityName, setActivityName] = useState('')
+  const [activityName, setActivityName] = useState('');
 
   const getAllPublicRoutines = async () => {
     const publicRoutines = await showPublicRoutines();
@@ -52,29 +52,23 @@ const MyRoutines = () => {
     setRoutineId(event.target.dataset.id);
   };
 
-  const attachActivityToRoutineHandler = async (e) => {
-    await setRoutineId(e.target.dataset.rtnid);
+  const attachActivityToRoutineHandler = (e) => {
+    setRoutineId(e.target.dataset.rtnid);
+    console.log(routineId);
+    console.log(actId);
+    console.log(privateRoutine);
 
-    if (duration && actId && count && token && routineId){
-      await attachActivityToRoutine(token, actId, count, duration, routineId);
-    } else {
-      console.log("Something went wrong")
-    }
-    
+    const allCards = [...privateRoutine];
+    const myRoutine = allCards.filter((rtn) => rtn.id === routineId);
+    console.log(myRoutine);
+
+    // if (duration && count && routineId) {
+    //   attachActivityToRoutine(token, actId, count, duration, routineId);
+    // } else {
+    //   console.log('Something went wrong');
+    // }
   };
 
-  console.log(privateRoutine);
-// const myCard = privateRoutine.find((element) => {
-//   return element.id === 3450
-// })
-// const activityexample = myCard.activities.find((element) => {
-//   if (element.name === 'world news'){
-//     console.log("This activity exists")
-// return true
-//   } else { console.log("this activity doesn't exist")
-//     return false}
-// })
-// console.log(activityexample)
   return (
     <Layout>
       <button
@@ -106,7 +100,7 @@ const MyRoutines = () => {
       {privateRoutine.length ? (
         <div className={classes['routines-body']}>
           {privateRoutine.map((routine) => {
-            const routineId = routine.id
+            const routineId = routine.id;
             return (
               <div className={classes['routines-card']} key={routine.id}>
                 <div className={classes['rtn-header']}>
@@ -121,28 +115,30 @@ const MyRoutines = () => {
                 <div>
                   <Link to="/routineActivities">View Routine's Activities</Link>
                 </div>
-                <AllActivities setActId={setActId} activityName = {setActivityName} />
-                {routineId && actId ?
-                (
-                <div>
-                  <label>Count</label>
-                  <input
-                    type="text"
-                    onChange={(e) => setCount(e.target.value)}
-                  />
-                  <label>Duration</label>
-                  <input
-                    type="text"
-                    onChange={(e) => setDuration(e.target.value)}
-                  />
-                  <button
-                    data-rtnid={routine.id}
-                    onClick={attachActivityToRoutineHandler}
-                  >
-                    Attach routine
-                  </button>
-                </div>) :null}
-                
+                <AllActivities
+                  setActId={setActId}
+                  activityName={setActivityName}
+                />
+                {actId ? (
+                  <div className={classes['attach-routines']}>
+                    <label>Count</label>
+                    <input
+                      type="text"
+                      onChange={(e) => setCount(e.target.value)}
+                    />
+                    <label>Duration</label>
+                    <input
+                      type="text"
+                      onChange={(e) => setDuration(e.target.value)}
+                    />
+                    <button
+                      data-rtnid={routine.id}
+                      onClick={attachActivityToRoutineHandler}
+                    >
+                      Attach routine
+                    </button>
+                  </div>
+                ) : null}
 
                 <div className={classes['rtn-buttons']}>
                   <button onClick={deleteRoutineHandler} data-id={routine.id}>

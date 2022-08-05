@@ -111,3 +111,9 @@
   padding: 0.7rem 1.3rem;
   font-family: inherit;
 }
+
+.attach-routines {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}

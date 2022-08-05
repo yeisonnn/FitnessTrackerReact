@@ -1,16 +1,9 @@
 import React, { useState, useEffect } from 'react';
-
-
 import {
   getActivities,
   getAllPublicRoutinesbyActivityId,
   editActivityDescription,
 } from '../api';
-import CreateActivities from './CreateActivities';
-
-import { getActivities, getAllPublicRoutinesbyActivityId } from '../api';
-import CreateActivities from './createActivities';
-
 
 import Layout from './Layout';
 import classes from './Activities.module.css';
