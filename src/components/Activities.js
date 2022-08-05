@@ -115,12 +115,14 @@ const Activities = () => {
                   : 'There is no description'}
               </h3>
               {activityDescription && (
-                <div className={classes['description-btn']}>
+                <div className={classes['description-update']}>
+                  <label>Update here</label>
                   <input
                     type="text"
                     value={newDescription}
                     onChange={(e) => setNewDescription(e.target.value)}
                   />
+
                   <button onClick={updateDescriptionHandler}>
                     Update Description
                   </button>
