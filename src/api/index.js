@@ -176,6 +176,35 @@ export async function editActivity(name, description, token, activityId) {
   }
 }
 
+export async function editActivityDescription(token, description, activityId) {
+  try {
+    const response = await fetch(
+      `http://fitnesstrac-kr.herokuapp.com/api/activities/${activityId}`,
+      {
+        method: 'PATCH',
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${token}`,
+        },
+        body: JSON.stringify({
+          description: description,
+        }),
+      }
+    );
+
+    console.log(response);
+
+    if (!response.ok) {
+      throw new Error('Something went Wrong');
+    }
+
+    const data = await response.json();
+    return data;
+  } catch (error) {
+    console.error(error.message);
+  }
+}
+
 export async function getAllPublicRoutinesbyActivityId(activityId) {
   try {
     const response = await fetch(
