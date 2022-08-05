@@ -130,6 +130,7 @@ export async function getActivities() {
   }
 }
 
+
 export async function createActivity(name, description, token) {
   try {
     const response = await fetch(`${BASE}api/activities`, {
@@ -243,9 +244,6 @@ export async function editRoutine(name, goal, isPublic, routineId, token) {
   }
 }
 
-//http://fitnesstrac-kr.herokuapp.com/api/routines/6
-//`${BASE}api/routines/:${routineId}`
-
 export async function deleteRoutine(token, routineId) {
   try {
     const response = await fetch(
@@ -304,7 +302,7 @@ export async function attachActivityToRoutine(
   }
 }
 
-export async function updateRoutineActivity(count, duration, token) {
+export async function updateRoutineActivity(count, duration, token, routineActivityId) {
   try {
     const response = await fetch(
       `${BASE}api/routine_activities/routineActivityId`,
@@ -331,10 +329,10 @@ export async function updateRoutineActivity(count, duration, token) {
   }
 }
 
-export async function deleteRoutineActivity(token) {
+export async function deleteRoutineActivity(token, routineActivityId) {
   try {
     const response = await fetch(
-      `${BASE}api/routine_activities/routineActivityId`,
+      `${BASE}api/routine_activities/${routineActivityId}`,
       {
         method: 'DELETE',
         headers: {
