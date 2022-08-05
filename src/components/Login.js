@@ -8,13 +8,15 @@ const Login = (props) => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [tokenUser, setTokenUser] = useState('');
+  const [errorMessage, setErrorMessage] = useState ('')
   const { setUserLogged } = props;
 
   async function handleSubmit(event) {
     event.preventDefault();
     const loginInfo = await loginUser(username, password);
     if (!loginInfo) {
-      return;
+      setErrorMessage("Username or Password is incorrect")
+      return
     }
     const token = loginInfo.token;
     setTokenUser(token);
@@ -23,6 +25,7 @@ const Login = (props) => {
     storeCurrentUser('username', user);
     setUsername('');
     setPassword('');
+    setErrorMessage('');
     setUserLogged(getCurrentData('username'));
   }
 
@@ -43,6 +46,9 @@ const Login = (props) => {
         />
 
         <input type="submit" value="LOGIN" />
+        {errorMessage ? (
+          <h1>{errorMessage}</h1>
+        ):null}
       </form>
     </div>
   );
