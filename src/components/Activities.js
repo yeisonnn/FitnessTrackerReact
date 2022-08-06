@@ -114,7 +114,7 @@ const Activities = () => {
                   ? activityDescription
                   : 'There is no description'}
               </h3>
-              {activityDescription && (
+              {token && activityDescription && (
                 <div className={classes['description-update']}>
                   <label>Update Description here</label>
                   <input

@@ -81,15 +81,3 @@ const Routines = () => {
 };
 
 export default Routines;
-
-/*
-{publicRoutines.length ? (
-            <div>
-              {publicRoutines.map((routine) => (
-                <div>{routine.name}</div>
-              ))}
-            </div>
-          ) : (
-            <p>We cannot find any Routine</p>
-          )}
-*/

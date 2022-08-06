@@ -1,9 +1,15 @@
 import classes from './Modal.module.css';
+import { useNavigate } from 'react-router-dom';
 
 const Modal = (props) => {
+  const navigate = useNavigate();
   if (!props.show) {
     return null;
   }
+
+  const closeModalHandler = () => {
+    navigate('/');
+  };
 
   return (
     <div className={classes.modal}>
@@ -13,7 +19,9 @@ const Modal = (props) => {
         </div>
         <div className={classes['modal-body']}>{props.body}</div>
         <div className={classes['modal-footer']}>
-          <button className={classes['modal-btn']}>Close</button>
+          <button className={classes['modal-btn']} onClick={closeModalHandler}>
+            Close
+          </button>
         </div>
       </div>
     </div>

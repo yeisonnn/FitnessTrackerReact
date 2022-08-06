@@ -8,12 +8,12 @@ import { AiOutlineCopyright } from 'react-icons/ai';
 import logo from '../images/logo.svg';
 
 const Home = () => {
-  const [userLogged, setUserLogged] = useState('');
+  const [userLogged, setUserLogged] = useState(false);
   const currentUser = getCurrentData('username');
 
   const signOutHandler = () => {
+    setUserLogged();
     clearCurrentData();
-    setUserLogged('');
   };
 
   return (
@@ -24,11 +24,13 @@ const Home = () => {
             <h1 className={classes.title}>
               Welcome to <span>fitness </span>tracker
             </h1>
+
             <div>
               <button className={`${classes.btn} ${classes.secondary}`}>
                 <Link to="/register">Sign Up Now!</Link>
               </button>
             </div>
+
             <h3>Stay healthy - Get fit</h3>
             <ul className={classes['info-list']}>
               <li>
@@ -40,14 +42,14 @@ const Home = () => {
             </ul>
           </div>
           <div className={classes.info}>
-            {currentUser || userLogged ? (
+            {!currentUser && !userLogged ? (
+              <Login setUserLogged={setUserLogged} />
+            ) : (
               <div className={classes['home-user']}>
                 <h3>Welcome</h3>
                 <h2>{currentUser}</h2>
                 <button onClick={signOutHandler}>Sign out</button>
               </div>
-            ) : (
-              <Login setUserLogged={setUserLogged} />
             )}
           </div>
         </div>

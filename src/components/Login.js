@@ -18,11 +18,12 @@ const Login = (props) => {
     event.preventDefault();
     const loginInfo = await loginUser(username, password);
 
-    if (loginInfo.name === 'TypeError') {
+    if (!loginInfo) {
       setErrorMessage('Username or Password is incorrect');
       setError(true);
       return;
     }
+
     const token = loginInfo.token;
     setTokenUser(token);
     const user = loginInfo.user.username;

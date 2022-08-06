@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Metamorphous&display=swap');
+
 .modal {
   position: fixed;
   left: 0;
@@ -8,6 +10,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  font-family: 'Metamorphous', cursive;
 }
 
 .modal-content {
@@ -34,4 +37,6 @@
 
 .modal-btn {
   padding: 0.7rem 1.3rem;
+  font-family: inherit;
+  cursor: pointer;
 }
