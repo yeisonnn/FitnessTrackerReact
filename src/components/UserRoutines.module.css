@@ -14,8 +14,6 @@
   font-size: 4rem;
   color: #666;
   background-color: hsl(210, 16%, 96%);
-
-  /* clip-path: polygon(5% 0%, 100% 0%, 95% 100%, 0% 100%); */
   text-align: center;
   text-shadow: 1px 1px 1px #999;
 }

@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import classes from './Login.module.css';
 import { storeCurrentUser, getCurrentData } from '../utils/auth';
 import { loginUser } from '../api';
-import Layout from './Layout';
 import { useNavigate } from 'react-router-dom';
 
 const Login = (props) => {

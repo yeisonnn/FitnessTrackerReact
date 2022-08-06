@@ -4,7 +4,6 @@ import classes from './Home.module.css';
 import Login from './Login';
 import { getCurrentData, clearCurrentData } from '../utils/auth';
 import { AiOutlinePlus } from 'react-icons/ai';
-import { AiOutlineCopyright } from 'react-icons/ai';
 import logo from '../images/logo.svg';
 
 const Home = () => {

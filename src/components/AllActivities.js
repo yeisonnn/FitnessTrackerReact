@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { getActivities } from '../api';
 import classes from './AllActivities.module.css';
-import AttachActivityToRoutine from './attachActivityRoutine';
 
 const AllActivities = (props) => {
   const { setActId, setActivityName, setShowEdit, setError } = props;
@@ -47,7 +46,6 @@ const AllActivities = (props) => {
             Select ...
           </option>
           {allActivities.map((act) => {
-            const activityId = act.id;
             return (
               <option className={classes.option} value={act.name} key={act.id}>
                 {act.name}

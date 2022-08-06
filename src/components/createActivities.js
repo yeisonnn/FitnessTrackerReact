@@ -19,7 +19,6 @@ const CreateActivities = (props) => {
     setName('');
     setDescription('');
     getAllActivities();
-    console.log(activities, 'This is submitted activities');
   }
   return (
     <div className={classes['createAct-main']}>
@@ -50,34 +49,3 @@ const CreateActivities = (props) => {
 };
 
 export default CreateActivities;
-
-/*
-<div className={classes['createActivity-main']}>
-      <h3>Create an Activity Here!</h3>
-      <form onSubmit={handleSubmit} className={classes['createActivity-form']}>
-        <div className={classes['createActivity-name']}>
-          <label>Name</label>
-          <input
-            placeholder="Name of Activity"
-            type="text"
-            value={name}
-            onChange={(e) => setName(e.target.value)}
-          />
-        </div>
-        <div className={classes['createActivity-description']}>
-          <label>Description</label>
-          <input
-            placeholder="Description of Activity"
-            type="text"
-            value={description}
-            onChange={(e) => setDescription(e.target.value)}
-          />
-        </div>
-        <div className={classes['createActivity-btn']}>
-          <button type="submit">Create Activity</button>
-        </div>
-
-        {errorMessage ? <h1>{errorMessage}</h1> : null}
-      </form>
-    </div>
-*/

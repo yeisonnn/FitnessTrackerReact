@@ -1,6 +1,5 @@
 import React from 'react';
 import { Routes, Route } from 'react-router-dom';
-import Login from './Login';
 import Register from './Register';
 import Routines from './Routines';
 import MyRoutines from './MyRoutines';
@@ -11,7 +10,6 @@ import Home from './Home';
 import UserRoutines from './UserRoutines';
 import Modal from './Modal';
 
-//https://guarded-stream-12358.herokuapp.com/
 
 function App() {
   return (

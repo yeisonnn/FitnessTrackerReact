@@ -7,7 +7,6 @@ import {
 
 import Layout from './Layout';
 import classes from './Activities.module.css';
-import { GiClick } from 'react-icons/gi';
 import { getCurrentData } from '../utils/auth';
 import CreateActivities from './createActivities';
 
@@ -68,8 +67,6 @@ const Activities = () => {
     setNewDescription('');
     setActivityName(data.name);
     setActivityDescription(data.description);
-
-    console.log(allActivities);
   };
 
   return (

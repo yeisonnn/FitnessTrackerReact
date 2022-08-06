@@ -7,10 +7,8 @@ import Layout from './Layout';
 import { getCurrentData } from '../utils/auth';
 import classes from './MyRoutines.module.css';
 import AllActivities from './AllActivities';
-import { getActivities } from '../api';
 import { attachActivityToRoutine } from '../api';
 import { useNavigate, Link } from 'react-router-dom';
-import { RoutineActivities } from './RoutineActivities';
 import { GiClick } from 'react-icons/gi';
 
 const MyRoutines = () => {
@@ -79,7 +77,6 @@ const MyRoutines = () => {
         return;
       }
     } else {
-      console.log('has this activity');
       setError(true);
       return;
     }

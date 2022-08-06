@@ -14,14 +14,11 @@ const UserRoutines = () => {
       (act) => act.creatorName === username
     );
     setUserRoutines(filterActivities);
-    console.log(AllRoutines);
   };
 
   useEffect(() => {
     getActivitiesUser();
   }, []);
-
-  console.log('userActivities', userRoutines);
   return (
     <Layout>
       <div className={classes['routines-main']}>

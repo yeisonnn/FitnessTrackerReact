@@ -1,4 +1,3 @@
-// const BASE = 'https://guarded-stream-12358.herokuapp.com/';
 const BASE = 'https://fitnesstrac-kr.herokuapp.com/';
 
 export async function registerUser(username, password) {
@@ -193,8 +192,6 @@ export async function editActivityDescription(token, description, activityId) {
       }
     );
 
-    console.log(response);
-
     if (!response.ok) {
       throw new Error('Something went Wrong');
     }
@@ -289,7 +286,6 @@ export async function deleteRoutine(token, routineId) {
       throw new Error('Something went Wrong');
     }
     const data = await response.json();
-    console.log(data);
     return data;
   } catch (error) {
     console.error(error.message);
@@ -363,8 +359,6 @@ export async function updateRoutineActivity(
   }
 }
 
-// ${BASE}api/routine_activities/${routineActivityId}
-
 export async function deleteRoutineActivity(token, routineActivityId) {
   try {
     const response = await fetch(
@@ -381,7 +375,7 @@ export async function deleteRoutineActivity(token, routineActivityId) {
       throw new Error('Something went Wrong');
     }
     const data = await response.json();
-    console.log(data, 'here in deleteRoutineActivity');
+    return data
   } catch (error) {
     console.error(error.message);
   }

@@ -28,8 +28,6 @@ const Register = () => {
       return;
     }
 
-    //resetting value for inputs
-
     setUsername('');
     setPassword('');
     navigate('/');
