@@ -14,10 +14,11 @@
     "web-vitals": "^2.1.4"
   },
   "scripts": {
-    "start": "react-scripts start",
+    "start": "node app.js",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
+    "start:dev": "nodemon app.js",
     "start-dev": "NODE_ENV='development' react-scripts start"
   },
   "eslintConfig": {
