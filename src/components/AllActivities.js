@@ -4,7 +4,7 @@ import classes from './AllActivities.module.css';
 import AttachActivityToRoutine from './attachActivityRoutine';
 
 const AllActivities = (props) => {
-  const { setActId, setActivityName } = props;
+  const { setActId, setActivityName, setShowEdit, setError } = props;
   const [activityId, setActivityId] = useState('');
   const [allActivities, setAllActivities] = useState([]);
 
@@ -25,29 +25,36 @@ const AllActivities = (props) => {
     const activity = activitiesFiltered.filter(
       (el) => el.name === event.target.value
     );
-    const activityId = activity[0].id;
+    setActivityName(activity.name);
+    setError(false);
 
-    if (activityId) {
-      setActId(activityId);
+    setShowEdit(true);
+    if (activity) {
+      setActId(activity[0].id);
+      setActivityName(activity[0].name);
     }
   };
 
   return (
     <div className={classes['allActivities-form']}>
-      <select
-        id="activities"
-        name="activities"
-        onChange={activityIdHandler}
-        value={activityId}
-      >
-        {allActivities.map((act) => {
-          const activityId = act.id;
-          return (
-            <option className={classes.option} value={act.name} key={act.id}>
-              {act.name}
-            </option>
-          );
-        })}
+      <select id="activities" name="activities" onChange={activityIdHandler}>
+        <>
+          <option
+            className={classes.option}
+            id={Math.random()}
+            value="select..."
+          >
+            Select ...
+          </option>
+          {allActivities.map((act) => {
+            const activityId = act.id;
+            return (
+              <option className={classes.option} value={act.name} key={act.id}>
+                {act.name}
+              </option>
+            );
+          })}
+        </>
       </select>
     </div>
   );

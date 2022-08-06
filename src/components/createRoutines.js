@@ -17,9 +17,7 @@ const CreateRoutine = (props) => {
       const activities = await createRoutine(name, goal, isPublic, token);
       setName('');
       setGoal('');
-
       setShowCreateRoutine(false);
-      setLoadingPage(true);
       getAllPublicRoutines();
     } else {
       setError(true);

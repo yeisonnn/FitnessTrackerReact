@@ -21,11 +21,13 @@ const MyRoutines = () => {
   const [actId, setActId] = useState('');
   const [count, setCount] = useState('');
   const [duration, setDuration] = useState('');
-  const [loadingPage, setLoadingPage] = useState(false);
+
   const username = getCurrentData('username');
   const token = getCurrentData('token');
   const navigate = useNavigate();
   const [activityName, setActivityName] = useState('');
+  const [showEdit, setShowEdit] = useState(false);
+  const [error, setError] = useState(false);
 
   const getAllPublicRoutines = async () => {
     const publicRoutines = await showPublicRoutines();
@@ -53,15 +55,34 @@ const MyRoutines = () => {
     setRoutineId(event.target.dataset.id);
   };
 
-  const attachActivityToRoutineHandler = (e) => {
-    setRoutineId(e.target.dataset.rtnid);
-    // console.log(routineId);
-    // console.log(actId);
-    // console.log(privateRoutine);
-
+  const attachActivityToRoutineHandler = async (e) => {
+    await setRoutineId(e.target.dataset.rtnid);
     const allCards = [...privateRoutine];
-    const myRoutine = allCards.filter((rtn) => rtn.id === routineId);
-    console.log(myRoutine);
+
+    if (!routineId) {
+      setError(true);
+      return;
+    }
+    const myRoutine = allCards.filter((rtn) => rtn.id == routineId);
+    const myRoutineActivities = myRoutine[0].activities;
+    const hasActivity = myRoutineActivities?.find(
+      (ele) => ele.name === activityName
+    );
+
+    if (!hasActivity && myRoutineActivities) {
+      if (token && actId && count && duration && routineId) {
+        attachActivityToRoutine(token, actId, count, duration, routineId);
+
+        setShowEdit(false);
+      } else {
+        setError(true);
+        return;
+      }
+    } else {
+      console.log('has this activity');
+      setError(true);
+      return;
+    }
   };
 
   return (
@@ -76,7 +97,6 @@ const MyRoutines = () => {
         <div className={classes['myRtn-modal']}>
           <CreateRoutine
             setShowCreateRoutine={setShowCreateRoutine}
-            setLoadingPage={setLoadingPage}
             getAllPublicRoutines={getAllPublicRoutines}
           />
         </div>
@@ -113,13 +133,17 @@ const MyRoutines = () => {
                   </Link>
                 </div>
                 <p className={classes['allActivities']}>All Activities</p>
+
                 <AllActivities
                   setActId={setActId}
-                  activityName={setActivityName}
+                  setActivityName={setActivityName}
+                  setShowEdit={setShowEdit}
+                  setError={setError}
                 />
 
-                {actId ? (
+                {actId && showEdit ? (
                   <div className={classes['attach-routines']}>
+                    <span onClick={() => setShowEdit(false)}>Close</span>
                     <label>Count</label>
                     <input
                       type="text"
@@ -137,6 +161,11 @@ const MyRoutines = () => {
                     >
                       Attach routine
                     </button>
+                    {error && (
+                      <p className={classes['error-activity']}>
+                        Select other activity
+                      </p>
+                    )}
                   </div>
                 ) : null}
 

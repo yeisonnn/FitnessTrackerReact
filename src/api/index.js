@@ -319,12 +319,12 @@ export async function attachActivityToRoutine(
         }),
       }
     );
-    console.log(response);
+
     if (!response.ok) {
       throw new Error('Something went Wrong');
     }
     const data = await response.json();
-    console.log(data);
+
     return data;
   } catch (error) {
     console.error(error.message);

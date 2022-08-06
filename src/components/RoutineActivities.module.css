@@ -2,11 +2,11 @@
 
 .routines-main {
   padding: 2rem;
+  margin-bottom: 2rem;
 }
 
 .routines-header {
   box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
-
   margin-bottom: 2rem;
 }
 
@@ -14,26 +14,8 @@
   font-size: 4rem;
   color: #666;
   background-color: hsl(210, 16%, 96%);
-
-  /* clip-path: polygon(5% 0%, 100% 0%, 95% 100%, 0% 100%); */
   text-align: center;
   text-shadow: 1px 1px 1px #999;
-}
-
-.routines-header span {
-  color: #e67700;
-  text-shadow: 2px 2px 1px rgba(0, 0, 0, 0.4);
-  font-size: 7rem;
-  font-family: 'Pangolin', cursive;
-  letter-spacing: 2px;
-}
-.routines-body {
-  display: grid;
-  grid-template-rows: repeat(auto-fit, minmax(250px, min-content));
-  grid-template-columns: repeat(auto-fit, minmax(200px, 210px));
-  column-gap: 1rem;
-  row-gap: 1rem;
-  justify-content: center;
 }
 
 .routines-card {
@@ -43,6 +25,17 @@
   flex-direction: column;
   gap: 2.4rem;
   min-height: 250px;
+  width: 90%;
+  margin: 0 auto;
+  margin-bottom: 2rem;
+}
+
+.routines-title {
+  color: #e67700;
+  text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.2);
+  font-size: 2.8rem;
+  font-family: 'Pangolin', cursive;
+  letter-spacing: 2px;
 }
 
 .rtn-header h2 {
@@ -73,4 +66,19 @@
   text-align: center;
   margin-bottom: 4px;
   font-size: 1.3rem;
+}
+
+.no-activities {
+  font-size: 2.4rem;
+  color: #333;
+}
+
+.link-routines {
+  font-size: 1.2rem;
+  position: absolute;
+  color: #333;
+}
+
+.link-routines:active {
+  color: #333;
 }
