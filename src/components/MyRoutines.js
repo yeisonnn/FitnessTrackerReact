@@ -10,6 +10,7 @@ import AllActivities from './AllActivities';
 import { attachActivityToRoutine } from '../api';
 import { useNavigate, Link } from 'react-router-dom';
 import { GiClick } from 'react-icons/gi';
+import Error from './Error';
 
 const MyRoutines = () => {
   const [privateRoutine, setPrivateRoutines] = useState([]);
@@ -90,6 +91,8 @@ const MyRoutines = () => {
       >
         {!showCreateRoutine ? 'Create Routine' : 'Close Form'}
       </button>
+
+      {error && <Error closeError={setError} />}
       {showCreateRoutine ? (
         <div className={classes['myRtn-modal']}>
           <CreateRoutine
@@ -158,11 +161,6 @@ const MyRoutines = () => {
                     >
                       Attach routine
                     </button>
-                    {error && (
-                      <p className={classes['error-activity']}>
-                        Select other activity
-                      </p>
-                    )}
                   </div>
                 ) : null}
 

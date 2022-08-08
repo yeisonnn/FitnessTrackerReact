@@ -59,16 +59,20 @@ const Routines = () => {
                   </h3>
                   <p>Activities</p>
                   <div className={classes['activitycontainer']}>
-                    {routine.activities.map((activity, index) => {
-                      return (
-                        <div key={`${index}${activity.name}`}>
-                          <h3>Activity:{activity.name}</h3>
-                          <h3>Description:{activity.description}</h3>
-                          <h3>Duration:{activity.duration}</h3>
-                          <h3>Count:{activity.count}</h3>
-                        </div>
-                      );
-                    })}
+                    {routine.activities.length ? (
+                      routine.activities.map((activity, index) => {
+                        return (
+                          <div key={`${index}${activity.name}`}>
+                            <h3>Activity:{activity.name}</h3>
+                            <h3>Description:{activity.description}</h3>
+                            <h3>Duration:{activity.duration}</h3>
+                            <h3>Count:{activity.count}</h3>
+                          </div>
+                        );
+                      })
+                    ) : (
+                      <h3>there are no activities for now!</h3>
+                    )}
                   </div>
                 </div>
               </div>

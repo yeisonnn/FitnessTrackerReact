@@ -20,7 +20,7 @@ export async function registerUser(username, password) {
     const data = await response.json();
     return data;
   } catch (error) {
-    console.error(error.messsage);
+    console.error(error);
   }
 }
 
@@ -38,13 +38,13 @@ export async function loginUser(username, password) {
     });
 
     if (!response.ok) {
-      throw new Error('Something went Wrong');
+      throw new Error('Username or Password is incorrect');
     }
     const data = await response.json();
 
     return data;
   } catch (error) {
-    console.error(error.messsage);
+    console.error(error);
   }
 }
 
@@ -63,7 +63,7 @@ export async function showMyInfo(token) {
     const data = await response.json();
     return data;
   } catch (error) {
-    console.error(error.messsage);
+    console.error(error);
   }
 }
 
@@ -76,7 +76,7 @@ export async function showPublicRoutines() {
     const data = await response.json();
     return data;
   } catch (error) {
-    console.error(error.message);
+    console.error(error);
   }
 }
 
@@ -95,7 +95,7 @@ export async function showRoutinesByUser(username, token) {
     const data = await response.json();
     return data;
   } catch (error) {
-    console.error(error.message);
+    console.error(error);
   }
 }
 
@@ -113,7 +113,7 @@ export async function showPublicRoutinesByUser(username) {
     const data = await response.json();
     return data;
   } catch (error) {
-    console.error(error.message);
+    console.error(error);
   }
 }
 
@@ -126,7 +126,7 @@ export async function getActivities() {
     const data = response.json();
     return data;
   } catch (error) {
-    console.error(error.message);
+    console.error(error);
   }
 }
 
@@ -149,7 +149,7 @@ export async function createActivity(name, description, token) {
     const data = await response.json();
     return data;
   } catch (error) {
-    console.error(error.message);
+    console.error(error);
   }
 }
 
@@ -172,25 +172,22 @@ export async function editActivity(name, description, token, activityId) {
     const data = await response.json();
     return data;
   } catch (error) {
-    console.error(error.message);
+    console.error(error);
   }
 }
 
 export async function editActivityDescription(token, description, activityId) {
   try {
-    const response = await fetch(
-      `http://fitnesstrac-kr.herokuapp.com/api/activities/${activityId}`,
-      {
-        method: 'PATCH',
-        headers: {
-          'Content-Type': 'application/json',
-          Authorization: `Bearer ${token}`,
-        },
-        body: JSON.stringify({
-          description: description,
-        }),
-      }
-    );
+    const response = await fetch(`${BASE}api/activities/${activityId}`, {
+      method: 'PATCH',
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${token}`,
+      },
+      body: JSON.stringify({
+        description: description,
+      }),
+    });
 
     if (!response.ok) {
       throw new Error('Something went Wrong');
@@ -199,7 +196,7 @@ export async function editActivityDescription(token, description, activityId) {
     const data = await response.json();
     return data;
   } catch (error) {
-    console.error(error.message);
+    console.error(error);
   }
 }
 
@@ -216,7 +213,7 @@ export async function getAllPublicRoutinesbyActivityId(activityId) {
     const data = await response.json();
     return data;
   } catch (error) {
-    console.error(error.message);
+    console.error(error);
   }
 }
 
@@ -241,7 +238,7 @@ export async function createRoutine(name, goal, isPublic, token) {
     const data = await response.json();
     return data;
   } catch (error) {
-    console.error(error.message);
+    console.error(error);
   }
 }
 
@@ -266,29 +263,26 @@ export async function editRoutine(name, goal, isPublic, routineId, token) {
     const data = await response.json();
     return data;
   } catch (error) {
-    console.error(error.message);
+    console.error(error);
   }
 }
 
 export async function deleteRoutine(token, routineId) {
   try {
-    const response = await fetch(
-      `http://fitnesstrac-kr.herokuapp.com/api/routines/${routineId}`,
-      {
-        method: 'DELETE',
-        headers: {
-          'Content-Type': 'application/json',
-          Authorization: `Bearer ${token}`,
-        },
-      }
-    );
+    const response = await fetch(`${BASE}api/routines/${routineId}`, {
+      method: 'DELETE',
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${token}`,
+      },
+    });
     if (!response.ok) {
       throw new Error('Something went Wrong');
     }
     const data = await response.json();
     return data;
   } catch (error) {
-    console.error(error.message);
+    console.error(error);
   }
 }
 
@@ -323,7 +317,7 @@ export async function attachActivityToRoutine(
 
     return data;
   } catch (error) {
-    console.error(error.message);
+    console.error(error);
   }
 }
 
@@ -355,14 +349,14 @@ export async function updateRoutineActivity(
     const data = await response.json();
     return data;
   } catch (error) {
-    console.error(error.message);
+    console.error(error);
   }
 }
 
 export async function deleteRoutineActivity(token, routineActivityId) {
   try {
     const response = await fetch(
-      `http://fitnesstrac-kr.herokuapp.com/api/routine_activities/${routineActivityId}`,
+      `${BASE}api/routine_activities/${routineActivityId}`,
       {
         method: 'DELETE',
         headers: {
@@ -375,8 +369,8 @@ export async function deleteRoutineActivity(token, routineActivityId) {
       throw new Error('Something went Wrong');
     }
     const data = await response.json();
-    return data
+    return data;
   } catch (error) {
-    console.error(error.message);
+    console.error(error);
   }
 }
